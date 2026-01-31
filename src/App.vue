@@ -18,6 +18,9 @@ import Header from './components/Header.vue';
   <main>
 
   </main>
+  <footer>
+    
+  </footer>
 </template>
 
 <style scoped>
