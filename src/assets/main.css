@@ -8,7 +8,8 @@
 }
 
 a,
-.green {
+.green,
+.navbar {
   text-decoration: none;
   color: hsl(177, 100%, 33%);
   transition: 0.4s;
@@ -16,8 +17,14 @@ a,
 }
 
 @media (hover: hover) {
-  a:hover {
+  a:hover,
+  .navbar >:hover {
     background-color: hsla(177, 100%, 33%, 0.5);
+    fill: black;
+    svg {
+      fill: black;
+      
+    }
   }
 }
 
@@ -29,7 +36,8 @@ a,
 
   #app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     padding: 0 2rem;
+    width: 100%;
   }
 }
