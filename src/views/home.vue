@@ -1,30 +1,30 @@
 <template>
     <v-main>
-        <v-container>
-            <v-row rows="2">
-                <v-col sm="6">
-                    <v-btn :to="{ name: 'add-report' }" stacked>
-                        <v-icon class="mt-1">mdi-file-document-plus</v-icon>
-                        <span class="text-caption mt-1">Add report</span>
+        <v-container class="bg">
+            <v-row>
+                <v-col cols="6">
+                    <v-btn block :to="{ name: 'Scheduled' }" stacked class="fill">
+                        <v-icon class="mt-1" size="85">mdi-bookmark-outline</v-icon>
+                        <span class="text-caption mt-1">Scheduled</span>
                     </v-btn>
                 </v-col>
-                <v-col sm="6">
-                    <v-btn :to="{ name: 'reports' }" stacked>
-                        <v-icon class="mt-1">mdi-file-document-multiple</v-icon>
-                        <span class="text-caption mt-1">Reports</span>
+                <v-col cols="6">
+                    <v-btn block :to="{ name: 'Completed' }" stacked class="fill">
+                        <v-icon class="mt-1" size="85">mdi-check-circle</v-icon>
+                        <span class="text-caption mt-1">Completed</span>
                     </v-btn>
                 </v-col>
             </v-row>
-            <v-row rows="2">
-                <v-col sm="6">
-                    <v-btn :to="{ name: 'documentation' }" stacked>
-                        <v-icon class="mt-1">mdi-information</v-icon>
-                        <span class="text-caption mt-1">Documentation</span>
+            <v-row>
+                <v-col>
+                    <v-btn block :to="{ name: 'KnowledgeBase' }" stacked class="fill">
+                        <v-icon class="mt-1" size="85">mdi-apps</v-icon>
+                        <span class="text-caption mt-1">Knowledge base</span>
                     </v-btn>
                 </v-col>
-                <v-col sm="6">
-                    <v-btn :to="{ name: 'settings' }" stacked>
-                        <v-icon class="mt-1">mdi-cog</v-icon>
+                <v-col>
+                    <v-btn block :to="{ name: 'settings' }" stacked class="fill">
+                        <v-icon class="mt-1" size="85">mdi-cog</v-icon>
                         <span class="text-caption mt-1">Settings</span>
                     </v-btn>
                 </v-col>
@@ -36,3 +36,21 @@
 <script setup>
 
 </script>
+
+<style scoped>
+.bg {
+    height: 500px;
+}
+
+.v-row {
+    height: 200px;
+}
+
+.fill {
+    min-height: 100%;
+}
+
+.text-caption {
+    font-size: .65rem !important;
+}
+</style>

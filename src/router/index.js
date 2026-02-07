@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Home.vue'
 import SettingsView from '../views/Settings.vue'
-import DocumentationView from '../views/Documentation.vue'
-import ReportsView from '../views/Reports.vue'
-import AddReportView from '../views/Add-report.vue'
-import TestView from '../views/Test.vue'
+import KnowledgeView from '../views/KnowledgeBase.vue'
+import CompletedView from '../views/Completed.vue'
+import ScheduledView from '../views/Scheduled.vue'
+import ActiveTaskView from '../views/ActiveTask.vue'
+import InformationView from '../views/Information.vue'
 
 const routes = [
   { path: '/',
@@ -17,24 +18,29 @@ const routes = [
     component: SettingsView
   },
   {
-    path: '/documentation',
-    name: 'documentation',
-    component: DocumentationView
+    path: '/knowledgebase',
+    name: 'KnowledgeBase',
+    component: KnowledgeView
   },
   {
-    path: '/reports',
-    name: 'reports',
-    component: ReportsView
+    path: '/completed',
+    name: 'Completed',
+    component: CompletedView
   },
   {
-    path: '/add-report',
-    name: 'add-report',
-    component: AddReportView
+    path: '/scheduled',
+    name: 'Scheduled',
+    component: ScheduledView
   },
   {
-    path: '/Test',
-    name: 'Test',
-    component: TestView
+    path: '/active-task',
+    name: 'ActiveTask',
+    component: ActiveTaskView
+  },
+  {
+    path: '/information',
+    name: 'Information',
+    component: InformationView
   }
 ]
 

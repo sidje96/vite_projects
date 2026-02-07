@@ -1,5 +1,5 @@
 <template>
-    Test
+    Scheduled
 </template>
 
 <script setup>

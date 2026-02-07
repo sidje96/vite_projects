@@ -1,5 +1,5 @@
 <template>
-    Reports
+    Completed
 </template>
 
 <script setup>

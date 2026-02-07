@@ -1,5 +1,5 @@
 <template>
-    add-reports
+    <div>Knowledge base</div>
 </template>
 
 <script setup>
