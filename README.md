@@ -16,4 +16,4 @@ npm run dev
 ```
 optioneel: 
 npm run dev -- --host
-zodat je de server ook op andere apparaten kan openen
+zodat je de server ook op andere apparaten kan openen zoals je telefoon
