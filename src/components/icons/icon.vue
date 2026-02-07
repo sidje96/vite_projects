@@ -3,7 +3,7 @@
     xmlns="http://www.w3.org/2000/svg"
     :width="size"
     :height="size"
-    viewBox="2 2 428 428"
+    viewBox="0 0 430 430"
     fill="currentColor"
     :style="{ color }"
   >
@@ -25,7 +25,7 @@ defineProps({
   },
   color: {
     type: String,
-    default: 'rgba(0, 170, 162, 1)'
+    default: 'hsl(177, 100%, 34%)'
   }
 })
 </script>

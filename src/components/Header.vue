@@ -1,7 +1,7 @@
 <template>
-    <v-toolbar :elevation="10" color="black" class="pt-1">
+    <v-toolbar :elevation="10" color="black">
         <router-link to="/">
-            <Icon color="white" size="75" />
+            <Icon color="white" size="70" />
         </router-link>
         <div class="d-flex flex-column align-xs-center">       
             <span :class="size">Real Estate Care</span>
@@ -47,6 +47,7 @@ function goback() {
 .text-subtitle-1 {
     font-size: .8rem !important;
 }
+
 .text-caption {
     font-size: .60rem !important;
 }
