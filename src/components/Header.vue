@@ -1,7 +1,7 @@
 <template>
     <v-toolbar :elevation="10" color="black">
         <router-link to="/">
-            <Icon color="white" size="70" />
+            <Icon color="white" size="64" class="d-flex align-center" />
         </router-link>
         <div class="d-flex flex-column align-xs-center">       
             <span :class="size">Real Estate Care</span>

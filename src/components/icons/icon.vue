@@ -3,7 +3,7 @@
     xmlns="http://www.w3.org/2000/svg"
     :width="size"
     :height="size"
-    viewBox="0 0 430 430"
+    viewBox="0 0 420 420"
     fill="currentColor"
     :style="{ color }"
   >
