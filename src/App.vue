@@ -13,21 +13,13 @@ const icons = [
 
 <template>
   <v-app>
-    <line class="d-flex justify-end">
+    <v-sheet class="d-flex justify-end" height="28" color="custom-color">
       <div v-for="icon in icons" :key="icon.name">
-        <v-icon size="small" :color="color" :icon="`mdi-${icon.name}`" class="pr-1" />
-      </div> 
-    </line>
+        <v-icon size="small" :color="color" :icon="`mdi-${icon.name}`" class="mx-1" />
+      </div>
+    </v-sheet>
     <Header />
     <router-view/>
     <Footer/>
   </v-app>
 </template>
-
-<style>
-line {
-  display: block;
-  background: hsl(177, 100%, 34%);
-  height: 28px;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-<v-bottom-navigation bg-color="hsl(177, 100%, 34%)" height="56">
+<v-bottom-navigation bg-color="custom-color" height="56">
     <v-spacer/>
     <v-btn :to="{name: 'ActiveTask'}" stacked>
         <v-icon>mdi-wrench</v-icon>
@@ -20,6 +20,3 @@
 <script setup>
 
 </script>
-
-<style scoped>
-</style>

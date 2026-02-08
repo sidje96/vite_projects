@@ -18,7 +18,18 @@ const vuetify = createVuetify({
     defaultSet: 'mdi',
     aliases,
     sets: { mdi }
+  },
+  theme: {
+    defaultTheme: 'light',
+    themes: {
+      light: {
+        colors: {
+          'custom-color': 'hsl(177, 100%, 34%)'
+        }
+      }
+    }
   }
+
 })
 
 
