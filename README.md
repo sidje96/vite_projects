@@ -4,15 +4,21 @@ Deze app ben ik mee bezig om te maken als eindopdracht voor mijn frontend framew
 
 ## to-do:
 
-npm en node.js en vite moeten geïnstalleerd zijn om het te kunnen gebruiken.
+npm en node.js, vite en json-server moeten geïnstalleerd zijn om het te kunnen gebruiken.
 
 ## commands:
 
 open je opdrachtenprompt
 ga naar de juiste folder
+of open de juiste folder in vscode, open daarin 2 terminals in de ene 
 typ:
 ```
 npm run dev
+
+```
+en in de ander:
+```
+npm run json-server
 ```
 optioneel: 
 npm run dev -- --host

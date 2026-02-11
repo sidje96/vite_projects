@@ -1,9 +1,9 @@
 <template>
-    Completed
+    <InspectionList/>
 </template>
 
 <script setup>
-
+import InspectionList from '@/components/InspectionList.vue'
 </script>
 
 <style scoped>

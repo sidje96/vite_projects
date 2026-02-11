@@ -1,0 +1,52 @@
+{
+  "inspections": [
+    {
+      "id": 1,
+      "inspectionDate": "2025-02-01",
+      "propertyId": "RE-1023",
+      "inspectorName": "John Doe",
+      "status": "Completed",
+      "summary": "Minor defects in bathroom."
+    },
+    {
+      "id": 2,
+      "inspectionDate": "2025-03-12",
+      "propertyId": "AD-4213",
+      "inspectorName": "James Earl",
+      "status": "Completed",
+      "summary": "Mold in the corners of the kitchen"
+    },
+    {
+      "id": 3,
+      "inspectionDate": "2035-07-07",
+      "propertyId": "BD-8523",
+      "inspectorName": "Kitty Cat",
+      "status": "Waiting",
+      "summary": ""
+    },
+    {
+      "id": 4,
+      "inspectionDate": "2026-09-17",
+      "propertyId": "ZX-2538",
+      "inspectorName": "Rebecca Hendriks",
+      "status": "Pending",
+      "summary": ""
+    },
+    {
+      "id": 5,
+      "inspectionDate": "2036-01-07",
+      "propertyId": "DG-8352",
+      "inspectorName": "Henriette Gertrude",
+      "status": "Waiting",
+      "summary": ""
+    },
+    {
+      "id": 6,
+      "inspectionDate": "2025-01-07",
+      "propertyId": "HJ-0125",
+      "inspectorName": "Dave Schneider",
+      "status": "Completed",
+      "summary": "No minor defects found"
+    }
+  ]
+}
