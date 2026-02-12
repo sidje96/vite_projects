@@ -19,7 +19,10 @@ const icons = [
       </div>
     </v-sheet>
     <Header />
-    <router-view/>
+    <v-main>
+      <router-view/>
+    </v-main>
+    
     <Footer/>
   </v-app>
 </template>

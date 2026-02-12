@@ -25,7 +25,7 @@ function selectInspection(inspection) {
   <v-container class="py-6">
     <v-row>
       <v-col cols="12" md="6">
-        <h2 class="text-h5 mb-4">Inspections</h2>
+        <h2 class="text-h5 font-weight-bold mb-4 text-custom-color">Inspections</h2>
 
         <v-list>
           <v-list-item
