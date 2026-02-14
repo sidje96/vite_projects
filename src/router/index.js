@@ -6,6 +6,7 @@ import CompletedView from '../views/Completed.vue'
 import ScheduledView from '../views/Scheduled.vue'
 import ActiveTaskView from '../views/ActiveTask.vue'
 import InformationView from '../views/Information.vue'
+import FormView from '../views/FormView.vue'
 
 const routes = [
   { path: '/',
@@ -41,6 +42,11 @@ const routes = [
     path: '/information',
     name: 'Information',
     component: InformationView
+  },
+  {
+    path: '/form',
+    name: 'Form',
+    component: FormView
   }
 ]
 
