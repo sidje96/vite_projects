@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import InspectionList from '@/components/InspectionList.vue'
+import InspectionList from '@/components/List/InspectionList.vue'
 </script>
