@@ -8,12 +8,26 @@
             <span class="text-caption text-sm-subtitle-2 text-md-subtitle-1">Caring is in our nature</span>
         </div>
         <v-spacer />        
-        <v-btn @click="goback" title="back" :size="xs ? '25' : (sm ? '35' : '45')" class="rounded-circle">
-            <v-icon :size="xs ? '20' : (sm ? '30' : '40')">mdi-arrow-left</v-icon>
+        <v-hover v-slot="{ isHovering, props }">
+            <v-btn
+            v-bind="props" 
+            @click="goback" 
+            title="back" 
+            :size="xs ? '25' : (sm ? '35' : '45')"
+            :class="[isHovering ? 'bg-white text-custom-color' : 'bg-black', ' rounded-circle']">
+                <v-icon :size="xs ? '20' : (sm ? '30' : '40')">mdi-arrow-left</v-icon>
         </v-btn>
-        <v-btn :to="{name: 'settings'}" title="settings" :size="xs ? '25' : (sm ? '35' : '45')" class="rounded-circle">
+        </v-hover>
+        <v-hover v-slot="{ isHovering, props}">        
+        <v-btn 
+        v-bind="props"
+        :to="{name: 'settings'}" 
+        title="instellingen" 
+        :size="xs ? '25' : (sm ? '35' : '45')" 
+        :class="[isHovering ? 'bg-white text-custom-color' : 'bg-black', ' rounded-circle', 'mx-4']">
             <v-icon :size="xs ? '20' : (sm ? '30' : '40')">mdi-cog</v-icon>
-        </v-btn>   
+        </v-btn>
+        </v-hover>   
     </v-toolbar>
 </template>
 
@@ -31,3 +45,16 @@ function goback() {
 }
 
 </script>
+
+<style scoped>
+
+.custom-hover:hover:before,
+.custom-hover:focus:before {
+    color: transparent;
+}
+
+.custom-hover:hover {
+    background-color: hsl(177, 100%, 34%);
+}
+
+</style>
