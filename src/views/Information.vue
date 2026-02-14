@@ -1,5 +1,5 @@
 <template>
-    Information
+    Informatie
 </template>
 
 <script setup>
