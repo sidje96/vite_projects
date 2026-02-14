@@ -9,10 +9,17 @@ import '@mdi/font/css/materialdesignicons.css'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
+import { VFileUpload } from 'vuetify/labs/VFileUpload'
 
+import { createPinia } from "pinia"
+
+const pinia = createPinia()
 
 const vuetify = createVuetify({
-  components,
+  components: {
+    ...components,
+    VFileUpload,
+  },
   directives,
   icons: {
     defaultSet: 'mdi',
@@ -36,4 +43,5 @@ const vuetify = createVuetify({
 createApp(App)
     .use(router)
     .use(vuetify)
+    .use(pinia)
     .mount('#app')
