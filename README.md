@@ -10,6 +10,7 @@ Om dit project te kunnen draaien heb je nodig:
 - npm
 - Vite (wordt automatisch geïnstalleerd)
 - JSON‑Server (zelf installeren)
+- Pinia (zelf installeren)
 
 
 ## commands:
