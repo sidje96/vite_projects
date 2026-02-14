@@ -1,5 +1,5 @@
 <template>
-    Active-task
+    Actieve taak
 </template>
 
 <script setup>
