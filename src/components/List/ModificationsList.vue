@@ -20,19 +20,19 @@ const items = defineModel()
         </v-col>
 
         <v-col cols="12" md="4"><strong>Locatie</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Location }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Location || "-" }}</v-col>
         
         <v-col cols="12" md="4"><strong>Uitgevoerd door</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.ExecutedBy }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.ExecutedBy || "-" }}</v-col>
 
         <v-col cols="12" md="4"><strong>Beschrijving</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Description }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Description || "-" }}</v-col>
 
         <v-col cols="12" md="4"><strong>Te ondernemen actie</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Action }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Action || "-" }}</v-col>
 
         <v-col cols="12" md="4"><strong>Opmerkingen</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Remarks }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Remarks || "-" }}</v-col>
 
         <v-col cols="12" md="4"><strong>Foto's</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">

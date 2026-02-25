@@ -14,13 +14,13 @@ const items = defineModel()
     >
     <v-row no-gutters class="w-100">
         <v-col cols="12" md="4"><strong>Locatie</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Location }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Location || "-" }}</v-col>
 
         <v-col cols="12" md="4"><strong>Soort installatie</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Type }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Type || "-" }}</v-col>
 
         <v-col cols="12" md="4"><strong>Storingen</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Errors }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Errors || "-" }}</v-col>
 
         <v-col cols="12" md="4"><strong>Test procedure</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">
