@@ -11,8 +11,23 @@ export const useInspectionStore = defineStore('inspection', {
     currentInspection: null,
     loadingInitial: false,
     loadingAction: false,
+    sortAsc: true,
     error: null
   }),
+
+  getters: {
+    sortedInspections(state) {
+      return [...state.submittedInspections].sort((a, b) => {
+        const dateA = new Date(a.Date)
+        const dateB = new Date(b.Date)
+
+        return state.sortAsc
+          ? dateB - dateA
+          : dateA - dateB
+      })
+    }
+  },
+
   actions: {
     async fetchInspections() {
       this.loadingInitial = true
@@ -63,6 +78,10 @@ export const useInspectionStore = defineStore('inspection', {
       } finally {
         this.loadingAction = false
       }
+    },
+
+    toggleSort() {
+      this.sortAsc = !this.sortAsc
     }
   }
 })
