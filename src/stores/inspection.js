@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { createInspection } from '@/models/Inspections.js'
+import { API_URL } from '@/config'
 
-const host = window.location.hostname
-const BASE_URL = `http://${host}:3000`
+const BASE_URL = API_URL
 
 
 export const useInspectionStore = defineStore('inspection', {

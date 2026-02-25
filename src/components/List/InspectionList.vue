@@ -10,11 +10,21 @@ const store = useInspectionStore()
 
 const inspections = computed(() => store.submittedInspections)
 
-const sortedInspections = computed(() =>
+const sortToggle = ref(true)
+
+const sortedInspectionsAscending = computed(() =>
   [...inspections.value].sort((a, b) =>
-    a.Date < b.Date ? 1 : -1
+    new Date(b.Date) - new Date(a.Date)
   )
 )
+
+const sortedInspectionsDescending = computed(() => 
+  [...inspections.value].sort((a, b) => 
+    new Date(a.Date) - new Date(b.Date)
+  )
+)
+
+const sortedInspections = sortedInspectionsAscending
 
 onMounted(() => {
   store.fetchInspections()
@@ -57,7 +67,12 @@ function confirmDelete(id) {
     <v-row>
       <!-- LEFT SIDE: LIST -->
       <v-col cols="12" md="6">
-        <h2 class="text-h5 font-weight-bold mb-4 text-custom-color">Inspecties</h2>
+        <v-row>
+          <h2 class="text-h5 font-weight-bold mb-4 text-custom-color">Inspecties</h2>
+          <v-spacer/>
+          <v-btn size="small" @click="sortToggle = !sortToggle">Datum <v-icon>mdi-sort-ascending</v-icon></v-btn>
+          <v-spacer></v-spacer>
+        </v-row>
 
         <v-list>
           <v-list-item
