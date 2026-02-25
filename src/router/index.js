@@ -47,6 +47,10 @@ const routes = [
     path: '/form',
     name: 'Form',
     component: FormView
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ]
 
