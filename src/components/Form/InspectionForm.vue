@@ -1,12 +1,15 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed, watch } from 'vue'
 import { useInspectionStore } from '@/stores/inspection'
 import DamageForm from "./DamageForm.vue"
 import OverdueForm from "./OverdueForm.vue"
 import TechForm from "./TechForm.vue"
 import ModForm from './ModForm.vue'
+import router from '@/router'
 
 const store = useInspectionStore()
+
+const isEdit = computed(() => !!store.currentInspection)
 
 const defaultInspection = {
   Location: '',
@@ -71,8 +74,15 @@ function submitForm() {
     }))
   }
 
-  store.addInspection(copy)
-  resetForm()
+  if (isEdit.value) {
+    store.updateInspection(copy)
+    router.push({ name: 'Completed' })
+  } else {
+    store.addInspection(copy)
+  }
+
+resetForm()
+
 }
 
 function resetForm() {
@@ -85,6 +95,20 @@ const techPanel = ref([])
 const modPanel = ref([])
 
 const inspection = reactive(JSON.parse(JSON.stringify(defaultInspection)))
+
+watch(
+  () => store.currentInspection,
+  (value) => {
+    if (value) {
+      // EDIT MODE → formulier vullen
+      Object.assign(inspection, JSON.parse(JSON.stringify(value)))
+    } else {
+      // CREATE MODE → leeg formulier
+      Object.assign(inspection, JSON.parse(JSON.stringify(defaultInspection)))
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
@@ -100,6 +124,8 @@ const inspection = reactive(JSON.parse(JSON.stringify(defaultInspection)))
   <v-container v-else>
 
     <h2>Inspectie Formulier</h2>
+
+    <h3>{{ isEdit ? 'Inspectie bewerken:' : 'Nieuwe inspectie:' }}</h3>
 
     <!-- BASIC -->
     <v-text-field label="Locatie" v-model="inspection.Location" />

@@ -78,6 +78,33 @@ export const useInspectionStore = defineStore('inspection', {
         this.loadingAction = false
       }
     },
+    
+    async updateInspection(updated) {
+      this.loadingAction = true
+      try {
+        const res = await fetch(`${BASE_URL}/inspections/${updated.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updated)
+        })
+
+        const saved = await res.json()
+
+        const index = this.submittedInspections.findIndex(i => i.id === saved.id)
+        if (index !== -1) {
+          this.submittedInspections[index] = updated
+        }
+
+        await this.fetchInspections()
+
+        this.currentInspection = null
+
+      } catch (err) {
+        this.error = err
+      } finally {
+        this.loadingAction = false
+      }
+    },
 
     toggleSort() {
       this.sortAsc = !this.sortAsc

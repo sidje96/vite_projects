@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import InspectionDetail from './InspectionDetails.vue'
 import { useInspectionStore } from '@/stores/inspection'
 import { useDate } from '@/composables/useDate.js'
+import router from '@/router'
 
 const { formatDate } = useDate()
 
@@ -22,6 +23,10 @@ function selectInspection(inspection) {
   }
 }
 
+function editInspection(inspection) {
+  store.currentInspection = { ...inspection }
+  router.push({ name: 'Form' })
+}
 
 function confirmDelete(id) {
   if (confirm("Weet je zeker dat je deze inspectie wilt verwijderen?")) {
@@ -42,7 +47,7 @@ function confirmDelete(id) {
     <v-skeleton-loader
       type="list-item-two-line"
       class="mb-2"
-      v-for="n in 6"
+      v-for="n in sortedInspections.length"
       :key="n"
     />
   </div>
@@ -81,6 +86,12 @@ function confirmDelete(id) {
             </v-list-item-subtitle>
 
             <template #append>
+              <v-btn
+                icon="mdi-pencil"
+                color="custom-color"
+                variant="text"
+                @click.stop="editInspection(inspection)"
+              />
               <v-btn
                 icon="mdi-delete"
                 color="red"
