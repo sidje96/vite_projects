@@ -15,7 +15,7 @@
             title="uitloggen" 
             :size="xs ? '25' : (sm ? '35' : '45')"
             :class="[isHovering ? 'bg-white text-custom-color' : 'bg-black', ' rounded-circle']">
-                <v-icon :size="xs ? '20' : (sm ? '30' : '40')">mdi-logout</v-icon>
+                <v-icon :size="xs ? '20' : (sm ? '30' : '35')">mdi-logout</v-icon>
         </v-btn>
         </v-hover>
         <v-hover v-slot="{ isHovering, props}">        
@@ -25,7 +25,7 @@
         title="instellingen" 
         :size="xs ? '25' : (sm ? '35' : '45')" 
         :class="[isHovering ? 'bg-white text-custom-color' : 'bg-black', ' rounded-circle', 'mx-4']">
-            <v-icon :size="xs ? '20' : (sm ? '30' : '40')">mdi-cog</v-icon>
+            <v-icon :size="xs ? '20' : (sm ? '30' : '35')">mdi-cog</v-icon>
         </v-btn>
         </v-hover>   
     </v-toolbar>
