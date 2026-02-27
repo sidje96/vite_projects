@@ -14,9 +14,6 @@ onMounted(() => {
     setTimeout(() => {
         showAlert.value = true
     }, 5000)
-    setTimeout(() => {
-        showAlert.value = false
-    }, 15000)
 })
 
 function verify() {
@@ -54,6 +51,7 @@ function verify() {
             type="error"
             class="mb-4"
             density="compact"
+            closable
         >
             {{ auth.error }}
         </v-alert>
@@ -62,6 +60,7 @@ function verify() {
             type="info"
             width="100%"
             class="text-body-2 text-center my-4"
+            closable
         >
             Je verificatiecode is: <strong>{{ auth.generatedCode }}</strong>
         </v-alert>
