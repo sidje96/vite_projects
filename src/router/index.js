@@ -7,56 +7,65 @@ import ScheduledView from '../views/Scheduled.vue'
 import ActiveTaskView from '../views/ActiveTask.vue'
 import InformationView from '../views/Information.vue'
 import FormView from '../views/FormView.vue'
+import LoginView from '../views/Login/Login.vue'
+import TwoFactorAuth from '../views/Login/TwoFactor.vue'
+
+import DefaultLayout from '../layouts/DefaultLayout.vue'
+import AuthLayout from '../layouts/AuthLayout.vue'
+
+import { useAuthStore } from '@/stores/auth'
 
 const routes = [
-  { path: '/',
-    name: 'Home',
-    component: HomeView 
-  },
   {
-    path: '/settings',
-    name: 'settings',
-    component: SettingsView
+    path: '/',
+    component: DefaultLayout,
+    meta: { requiresAuth: true },
+    children: [
+      { path: '', name: 'Home', component: HomeView },
+      { path: 'settings', name: 'Settings', component: SettingsView },
+      { path: 'knowledgebase', name: 'KnowledgeBase', component: KnowledgeView },
+      { path: 'completed', name: 'Completed', component: CompletedView },
+      { path: 'scheduled', name: 'Scheduled', component: ScheduledView },
+      { path: 'active-task', name: 'ActiveTask', component: ActiveTaskView },
+      { path: 'information', name: 'Information', component: InformationView },
+      { path: 'form', name: 'Form', component: FormView }
+    ]
   },
+
   {
-    path: '/knowledgebase',
-    name: 'KnowledgeBase',
-    component: KnowledgeView
+    path: '/auth',
+    component: AuthLayout,
+    children: [
+      { path: 'login', name: 'Login', component: LoginView, meta: { public: true } },
+      { path: '2fa', name: 'TwoFactor', component: TwoFactorAuth, meta: { requires2FA: true } }
+    ]
   },
-  {
-    path: '/completed',
-    name: 'Completed',
-    component: CompletedView
-  },
-  {
-    path: '/scheduled',
-    name: 'Scheduled',
-    component: ScheduledView
-  },
-  {
-    path: '/active-task',
-    name: 'ActiveTask',
-    component: ActiveTaskView
-  },
-  {
-    path: '/information',
-    name: 'Information',
-    component: InformationView
-  },
-  {
-    path: '/form',
-    name: 'Form',
-    component: FormView
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/'
-  }
+
+  { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to) => {
+  const auth = useAuthStore()
+
+  if (to.meta.public) return true
+
+  if (to.meta.requires2FA && auth.step !== 2) {
+    return '/auth/login'
+  }
+
+  if (to.meta.requiresAuth && !auth.isAuthenticated) {
+    if (auth.step === 2) {
+      return '/auth/2fa'
+    }
+    return '/auth/login'
+  }
+
+  return true
 })
 
 export default router

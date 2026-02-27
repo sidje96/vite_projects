@@ -22,7 +22,7 @@
                 </v-btn>
             </v-col>
             <v-col>
-                <v-btn block :to="{ name: 'settings' }" stacked>
+                <v-btn block :to="{ name: 'Settings' }" stacked>
                     <v-icon class="mt-1" size="80">mdi-cog</v-icon>
                     <span class="textstyle text-sm-body-2 text-md-h6">Instellingen</span>
                 </v-btn>

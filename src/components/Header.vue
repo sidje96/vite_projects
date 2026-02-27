@@ -11,17 +11,17 @@
         <v-hover v-slot="{ isHovering, props }">
             <v-btn
             v-bind="props" 
-            @click="goback" 
-            title="back" 
+            @click="logout" 
+            title="uitloggen" 
             :size="xs ? '25' : (sm ? '35' : '45')"
             :class="[isHovering ? 'bg-white text-custom-color' : 'bg-black', ' rounded-circle']">
-                <v-icon :size="xs ? '20' : (sm ? '30' : '40')">mdi-arrow-left</v-icon>
+                <v-icon :size="xs ? '20' : (sm ? '30' : '40')">mdi-logout</v-icon>
         </v-btn>
         </v-hover>
         <v-hover v-slot="{ isHovering, props}">        
         <v-btn 
         v-bind="props"
-        :to="{name: 'settings'}" 
+        :to="{name: 'Settings'}" 
         title="instellingen" 
         :size="xs ? '25' : (sm ? '35' : '45')" 
         :class="[isHovering ? 'bg-white text-custom-color' : 'bg-black', ' rounded-circle', 'mx-4']">
@@ -32,29 +32,19 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-import Icon from './icons/icon.vue';
-import { useDisplay } from 'vuetify';
+import { useRouter } from 'vue-router'
+import Icon from './icons/icon.vue'
+import { useDisplay } from 'vuetify'
+import { useAuthStore } from '@/stores/auth'
 
+const auth = useAuthStore()
 const router = useRouter()
+
+function logout() {
+  auth.logout()
+  router.push('/auth/login')
+}
 
 const { xs, sm } = useDisplay()
 
-function goback() {
-    router.back();
-}
-
 </script>
-
-<style scoped>
-
-.custom-hover:hover:before,
-.custom-hover:focus:before {
-    color: transparent;
-}
-
-.custom-hover:hover {
-    background-color: hsl(177, 100%, 34%);
-}
-
-</style>
