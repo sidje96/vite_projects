@@ -11,6 +11,7 @@ const password = ref('')
 const loading = ref(false)
 
 const form = ref(null)
+const visible = ref(false)
 
 onMounted(() => {
   auth.error = null
@@ -60,11 +61,14 @@ const required = v => !!v || 'Dit veld is verplicht'
                 {{ auth.error }}
             </v-alert>
             
-            <v-form ref="form" @submit.prevent="submit">
+            <v-form ref="form" validate-on="submit">
                 <v-text-field
+                    hide-details="auto"
                     v-model="username"
                     label="Gebruikersnaam"
+                    prepend-inner-icon="mdi-account"
                     variant="outlined"
+                    clearable
                     class="mb-3"
                     :rules="[required]"
                 />
@@ -72,7 +76,10 @@ const required = v => !!v || 'Dit veld is verplicht'
                 <v-text-field
                     v-model="password"
                     label="Wachtwoord"
-                    type="password"
+                    :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+                    :type="visible ? 'text' : 'password'"
+                    prepend-inner-icon="mdi-lock-outline"
+                    @click:append-inner="visible = !visible"
                     variant="outlined"
                     class="mb-4"
                     :rules="[required]"
