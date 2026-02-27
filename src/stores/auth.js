@@ -9,6 +9,8 @@ export const useAuthStore = defineStore('auth', {
     error: null
   }),
 
+  persist: true,
+
   actions: {
     login(username, password) {
       if (username === 'sidney' && password === 'test123') {

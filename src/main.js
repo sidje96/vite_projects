@@ -12,8 +12,10 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import { VFileUpload } from 'vuetify/labs/VFileUpload'
 
 import { createPinia } from "pinia"
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 const vuetify = createVuetify({
   components: {
