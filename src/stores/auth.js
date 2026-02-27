@@ -12,28 +12,40 @@ export const useAuthStore = defineStore('auth', {
   persist: true,
 
   actions: {
-    login(username, password) {
+    async login(username, password) {
+      this.error = null
+
+      await new Promise(resolve => setTimeout(resolve, 300))
+
       if (username === 'sidney' && password === 'test123') {
         this.generatedCode = String(Math.floor(Math.random() * 900000) + 100000)
-
         this.step = 2
-        this.error = null
+        return true
       } else {
         this.error = 'Onjuiste login'
+        return false
       }
     },
 
-    verifyCode(code) {
+    async verifyCode(code) {
+      this.error = null
+      await new Promise(resolve => setTimeout(resolve, 200))
+
       if (code === this.generatedCode) {
         this.isAuthenticated = true
         this.user = { name: 'Sidney' }
         this.step = 3
-        this.error = null
+        return true
       } else {
         this.error = 'Verkeerde code'
+        return false
       }
     },
-
+    
+    generateNewCode() {
+      this.generatedCode = String(Math.floor(Math.random() * 900000) + 100000)
+    },
+    
     logout() {
       this.user = null
       this.isAuthenticated = false
