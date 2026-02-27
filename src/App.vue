@@ -14,7 +14,6 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px hsl(0, 0%, 12%) inset !important;
   -webkit-text-fill-color: white !important;
-  -webkit-text-stroke-color: white !important;
+  caret-color: white !important;
 }
-
 </style>
