@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 
@@ -10,15 +10,30 @@ const username = ref('')
 const password = ref('')
 const loading = ref(false)
 
+const form = ref(null)
+
+onMounted(() => {
+  auth.error = null
+  auth.step = 1
+})
+
+
 async function submit() {
+  const { valid } = await form.value.validate()
+
+  if (!valid) return
+
   loading.value = true
-  auth.login(username.value, password.value)
+  await auth.login(username.value, password.value)
   loading.value = false
 
   if (auth.step === 2) {
     router.push('/2fa')
   }
 }
+
+const required = v => !!v || 'Dit veld is verplicht'
+
 </script>
 
 <template>
@@ -40,34 +55,40 @@ async function submit() {
                 type="error"
                 class="mb-4"
                 density="compact"
+                closable
             >
                 {{ auth.error }}
             </v-alert>
+            
+            <v-form ref="form" @submit.prevent="submit">
+                <v-text-field
+                    v-model="username"
+                    label="Gebruikersnaam"
+                    variant="outlined"
+                    class="mb-3"
+                    :rules="[required]"
+                />
 
-            <v-text-field
-                v-model="username"
-                label="Gebruikersnaam"
-                variant="outlined"
-                class="mb-3"
-            />
+                <v-text-field
+                    v-model="password"
+                    label="Wachtwoord"
+                    type="password"
+                    variant="outlined"
+                    class="mb-4"
+                    :rules="[required]"
+                />
 
-            <v-text-field
-                v-model="password"
-                label="Wachtwoord"
-                type="password"
-                variant="outlined"
-                class="mb-4"
-            />
+                <button type="submit" class="d-none"></button>
 
-            <v-btn
-                block
-                color="custom-color"
-                :loading="loading"
-                @click="submit"
-            >
-                Inloggen
-            </v-btn>
-
+                <v-btn
+                    block
+                    color="custom-color"
+                    :loading="loading"
+                    @click="submit"
+                >
+                    Inloggen
+                </v-btn>
+            </v-form>
         </v-card>
     </v-container>
 </template>

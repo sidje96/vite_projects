@@ -10,21 +10,34 @@ const code = ref('')
 const loading = ref(false)
 const showAlert = ref(false)
 
+const form = ref(null)
+
 onMounted(() => {
+    auth.error = null
+    if (auth.step === 2) {
+        auth.generateNewCode()
+    }
     setTimeout(() => {
         showAlert.value = true
     }, 5000)
 })
 
-function verify() {
+async function verify() {
+    const { valid } = await form.value.validate()
+
+    if (!valid) return
+
     loading.value = true
-    auth.verifyCode(code.value)
+    const success = await auth.verifyCode(code.value)
     loading.value = false
 
-    if (auth.isAuthenticated) {
+    if (success) {
         router.push('/')
     }
 }
+
+const required = v => !!v || 'Dit veld is verplicht'
+
 </script>
 
 <template>
@@ -64,23 +77,27 @@ function verify() {
         >
             Je verificatiecode is: <strong>{{ auth.generatedCode }}</strong>
         </v-alert>
+        <v-form ref="form" @submit.prevent="verify">
+            <v-text-field
+                v-model="code"
+                label="Code"
+                variant="outlined"
+                maxlength="6"
+                class="mb-4"
+                :rules="[required]"
+            />
 
-        <v-text-field
-            v-model="code"
-            label="Code"
-            variant="outlined"
-            maxlength="6"
-            class="mb-4"
-        />
+            <button type="submit" class="d-none"></button>
 
-        <v-btn
-            block
-            color="custom-color"
-            :loading="loading"
-            @click="verify"
-        >
-            Verifiëren
-        </v-btn>
+            <v-btn
+                block
+                color="custom-color"
+                :loading="loading"
+                @click="verify"
+            >
+                Verifiëren
+            </v-btn>
+        </v-form>
     </v-card>
 </v-container>
 </template>
