@@ -1,0 +1,239 @@
+{
+  "inspections": [
+    {
+      "id": "6670",
+      "Location": "Stadshart",
+      "Date": "2026-02-13",
+      "Damage": [
+        {
+          "Location": "Oostwaarts",
+          "DamageNew": true,
+          "Type": "geweld",
+          "Date": "2026-02-12",
+          "Acute": true,
+          "Description": "Deuren hoogvliet kapot",
+          "Pictures": []
+        }
+      ],
+      "OverdueMaintenance": [
+        {
+          "Location": "",
+          "Type": "",
+          "Acute": false,
+          "CostIndication": "",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [
+        {
+          "Location": "",
+          "Type": "",
+          "Errors": "",
+          "TestProcedure": [],
+          "Approved": false,
+          "Remarks": "",
+          "Pictures": []
+        }
+      ],
+      "Modifications": [
+        {
+          "Documentation": [],
+          "Location": "",
+          "ExecutedBy": "",
+          "Description": "",
+          "Action": "",
+          "Remarks": "",
+          "Pictures": []
+        }
+      ]
+    },
+    {
+      "id": "4647",
+      "Location": "Den Haag",
+      "Date": "2026-02-14",
+      "Damage": [
+        {
+          "Location": "",
+          "DamageNew": false,
+          "Type": "",
+          "Date": "",
+          "Acute": false,
+          "Description": "",
+          "Pictures": []
+        }
+      ],
+      "OverdueMaintenance": [
+        {
+          "Location": "",
+          "Type": "",
+          "Acute": false,
+          "CostIndication": "",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [
+        {
+          "Location": "",
+          "Type": "",
+          "Errors": "",
+          "TestProcedure": [],
+          "Approved": false,
+          "Remarks": "",
+          "Pictures": []
+        }
+      ],
+      "Modifications": [
+        {
+          "Documentation": [],
+          "Location": "Het Torentje",
+          "ExecutedBy": "onbekend",
+          "Description": "Deuren lijken futuristisch",
+          "Action": "laten keuren",
+          "Remarks": "Deuren gaan samen met rookmelders open en dicht",
+          "Pictures": []
+        }
+      ]
+    },
+    {
+      "Location": "Amsterdam",
+      "Date": "2026-02-21",
+      "Damage": [
+        {
+          "Location": "Lego house",
+          "DamageNew": false,
+          "Type": "geweld",
+          "Date": "2026-02-19",
+          "Acute": false,
+          "Description": "Deuren sluiten niet",
+          "Pictures": []
+        }
+      ],
+      "OverdueMaintenance": [
+        {
+          "Location": "",
+          "Type": "",
+          "Acute": false,
+          "CostIndication": "",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [
+        {
+          "Location": "Lego house",
+          "Type": "beveiliging",
+          "Errors": "Deur",
+          "TestProcedure": [],
+          "Approved": false,
+          "Remarks": "",
+          "Pictures": []
+        }
+      ],
+      "Modifications": [
+        {
+          "Documentation": [],
+          "Location": "",
+          "ExecutedBy": "",
+          "Description": "",
+          "Action": "",
+          "Remarks": "",
+          "Pictures": []
+        }
+      ],
+      "id": "f6b3"
+    },
+    {
+      "id": "6e06",
+      "Location": "Den haag",
+      "Date": "2026-01-26",
+      "Damage": [
+        {
+          "Location": "Domtoren",
+          "DamageNew": true,
+          "Type": "slijtage",
+          "Date": "2026-01-26",
+          "Acute": true,
+          "Description": "Staat op instorten",
+          "Pictures": []
+        }
+      ],
+      "OverdueMaintenance": [
+        {
+          "Location": "",
+          "Type": "",
+          "Acute": false,
+          "CostIndication": "",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [
+        {
+          "Location": "",
+          "Type": "",
+          "Errors": "",
+          "TestProcedure": [],
+          "Approved": false,
+          "Remarks": "",
+          "Pictures": []
+        }
+      ],
+      "Modifications": [
+        {
+          "Documentation": [],
+          "Location": "",
+          "ExecutedBy": "",
+          "Description": "",
+          "Action": "",
+          "Remarks": "",
+          "Pictures": []
+        }
+      ]
+    },
+    {
+      "id": "359b",
+      "Location": "Zoetermeer",
+      "Date": "2026-02-13",
+      "Damage": [
+        {
+          "Location": "",
+          "DamageNew": true,
+          "Type": "",
+          "Date": "",
+          "Acute": false,
+          "Description": "",
+          "Pictures": []
+        }
+      ],
+      "OverdueMaintenance": [
+        {
+          "Location": "",
+          "Type": "",
+          "Acute": false,
+          "CostIndication": "",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [
+        {
+          "Location": "",
+          "Type": "",
+          "Errors": "",
+          "TestProcedure": [],
+          "Approved": false,
+          "Remarks": "",
+          "Pictures": []
+        }
+      ],
+      "Modifications": [
+        {
+          "Documentation": [],
+          "Location": "Stadshart",
+          "ExecutedBy": "huurder",
+          "Description": "",
+          "Action": "accepteren",
+          "Remarks": "",
+          "Pictures": []
+        }
+      ]
+    }
+  ]
+}
