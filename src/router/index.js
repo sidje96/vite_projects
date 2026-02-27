@@ -44,6 +44,11 @@ const routes = [
   { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
 router.beforeEach((to) => {
   const auth = useAuthStore()
 
