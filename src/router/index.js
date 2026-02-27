@@ -36,36 +36,45 @@ const routes = [
     path: '/auth',
     component: AuthLayout,
     children: [
-      { path: 'login', name: 'Login', component: LoginView, meta: { public: true } },
-      { path: '2fa', name: 'TwoFactor', component: TwoFactorAuth, meta: { requires2FA: true } }
+      { path: 'login', name: 'Login', component: LoginView, meta: { public: true, guestOnly: true } },
+      { path: '2fa', name: 'TwoFactor', component: TwoFactorAuth, meta: { requires2FA: true, guestOnly: true } }
     ]
   },
 
   { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
-
 router.beforeEach((to) => {
   const auth = useAuthStore()
 
-  if (to.meta.public) return true
+  if (to.meta.public) {
+    if (to.meta.guestOnly && auth.isAuthenticated) {
+      return '/'
+    }
+    return true
+  }
 
-  if (to.meta.requires2FA && auth.step !== 2) {
+  if (to.meta.requires2FA) {
+    if (auth.step === 2 && !auth.isAuthenticated) {
+      return true
+    }
     return '/auth/login'
   }
 
-  if (to.meta.requiresAuth && !auth.isAuthenticated) {
+  if (to.meta.requiresAuth) {
+    if (auth.isAuthenticated) {
+      return true
+    }
+
     if (auth.step === 2) {
       return '/auth/2fa'
     }
+
     return '/auth/login'
   }
 
   return true
 })
+
 
 export default router
