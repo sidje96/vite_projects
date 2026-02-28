@@ -9,6 +9,7 @@ const router = useRouter()
 const code = ref('')
 const loading = ref(false)
 const showAlert = ref(false)
+const progress = ref(false)
 
 const form = ref(null)
 
@@ -17,7 +18,9 @@ onMounted(() => {
     if (auth.step === 2) {
         auth.generateNewCode()
     }
+    progress.value = true
     setTimeout(() => {
+        progress.value = false
         showAlert.value = true
     }, 5000)
 })
@@ -68,6 +71,11 @@ const required = v => !!v || 'Dit veld is verplicht'
         >
             {{ auth.error }}
         </v-alert>
+
+        <div v-if="progress" class="d-flex justify-center align-center mb-4 text-custom-color">
+            <v-progress-linear :indeterminate="progress"/>
+        </div>
+
         <v-alert
             v-if="showAlert"
             type="info"
@@ -77,6 +85,7 @@ const required = v => !!v || 'Dit veld is verplicht'
         >
             Je verificatiecode is: <strong>{{ auth.generatedCode }}</strong>
         </v-alert>
+        
         <v-form ref="form" @submit.prevent="verify">
             <v-text-field
                 v-model="code"
