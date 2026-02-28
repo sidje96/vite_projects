@@ -1,6 +1,5 @@
 <template>
-<v-bottom-navigation bg-color="custom-color" height="56">
-    <v-spacer/>
+<v-bottom-navigation bg-color="custom-color" height="56" class="d-flex justify-center align-center">
     <v-btn :to="{name: 'ActiveTask'}" stacked>
         <v-icon>mdi-wrench</v-icon>
         <span class="text-caption pt-1">Actieve taak</span>
@@ -13,7 +12,6 @@
         <v-icon>mdi-information</v-icon>
         <span class="text-caption pt-1">Informatie</span>
     </v-btn>
-    <v-spacer/>
 </v-bottom-navigation>
 </template>
 
