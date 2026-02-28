@@ -35,7 +35,8 @@ const vuetify = createVuetify({
     themes: {
       light: {
         colors: {
-          'custom-color': 'hsl(177, 100%, 34%)'
+          'custom-color': 'hsl(177, 100%, 34%)',
+          'cardBg': 'hsl(0, 0%, 12%)'
         }
       }
     }
