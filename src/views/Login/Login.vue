@@ -39,7 +39,7 @@ const required = v => !!v || 'Dit veld is verplicht'
 
 <template>
     <v-container class="fill-height d-flex align-center justify-center">
-        <v-card width="380" color="hsl(0, 0%, 12%)" class="pa-6">
+        <v-card width="380" color="cardBg" class="pa-6">
             <div class="text-center mb-6">
                 <v-img
                     src="/src/assets/LogoWithText.png"
@@ -61,7 +61,7 @@ const required = v => !!v || 'Dit veld is verplicht'
                 {{ auth.error }}
             </v-alert>
             
-            <v-form ref="form" validate-on="submit">
+            <v-form ref="form" validate-on="submit" @submit.prevent="submit">
                 <v-text-field
                     hide-details="auto"
                     v-model="username"
@@ -76,14 +76,26 @@ const required = v => !!v || 'Dit veld is verplicht'
                 <v-text-field
                     v-model="password"
                     label="Wachtwoord"
-                    :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
                     :type="visible ? 'text' : 'password'"
                     prepend-inner-icon="mdi-lock-outline"
-                    @click:append-inner="visible = !visible"
                     variant="outlined"
                     class="mb-4"
                     :rules="[required]"
-                />
+                    >
+                    <template #append-inner>
+                        <v-tooltip :text="[visible ? 'Verberg wachtwoord' : 'Toon wachtwoord']" location="bottom">
+                        <template #activator="{ props }">
+                            <v-icon
+                            v-bind="props"
+                            @click="visible = !visible"
+                            >
+                            {{ visible ? 'mdi-eye' : 'mdi-eye-off' }}
+                            </v-icon>
+                        </template>
+                        </v-tooltip>
+                    </template>
+                </v-text-field>
+
 
                 <button type="submit" class="d-none"></button>
 

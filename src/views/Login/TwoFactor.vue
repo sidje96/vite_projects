@@ -46,7 +46,7 @@ const required = v => !!v || 'Dit veld is verplicht'
 <template>
 <v-container class="fill-height d-flex align-center justify-center">
     
-    <v-card width="380" class="pa-6" color="hsl(0, 0%, 12%)">
+    <v-card width="380" class="pa-6" color="cardBg">
         <div class="text-center mb-6">
             <v-img
             src="/src/assets/LogoWithText.png"
@@ -86,7 +86,7 @@ const required = v => !!v || 'Dit veld is verplicht'
             Je verificatiecode is: <strong>{{ auth.generatedCode }}</strong>
         </v-alert>
         
-        <v-form ref="form" @submit.prevent="verify">
+        <v-form ref="form" validate-on="submit" @submit.prevent="verify">
             <v-text-field
                 v-model="code"
                 label="Code"
