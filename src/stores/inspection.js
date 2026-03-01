@@ -8,11 +8,15 @@ export const useInspectionStore = defineStore('inspection', {
   state: () => ({
     submittedInspections: [],
     currentInspection: null,
+    formInspection: null,
     loadingInitial: false,
     loadingAction: false,
     sortAsc: true,
-    error: null
+    error: null,
+    pendingSync: []
   }),
+
+  persist: true,
 
   getters: {
     sortedInspections(state) {
@@ -104,6 +108,22 @@ export const useInspectionStore = defineStore('inspection', {
       } finally {
         this.loadingAction = false
       }
+    },
+
+    addPendingSync(inspection) {
+      this.pendingSync.push(inspection)
+    },
+
+    removePendingSync(id) {
+      this.pendingSync = this.pendingSync.filter(i => i.id !== id)
+    },
+
+    setFormInspection(data) {
+      this.formInspection = data
+    },
+
+    clearFormInspection() {
+      this.formInspection = null
     },
 
     toggleSort() {
