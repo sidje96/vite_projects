@@ -83,7 +83,7 @@ const required = v => !!v || 'Dit veld is verplicht'
                     :rules="[required]"
                     >
                     <template #append-inner>
-                        <v-tooltip :text="[visible ? 'Verberg wachtwoord' : 'Toon wachtwoord']" location="bottom">
+                        <v-tooltip :text="visible ? 'Verberg wachtwoord' : 'Toon wachtwoord'" location="bottom">
                         <template #activator="{ props }">
                             <v-icon
                             v-bind="props"
