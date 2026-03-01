@@ -11,6 +11,8 @@ Om dit project te kunnen draaien heb je nodig:
 - Vite (wordt automatisch geïnstalleerd)
 - JSON‑Server (zelf installeren)
 - Pinia (zelf installeren)
+- Pinia plugin persist (zelf installeren)
+- indexeddb (idb-keyval)
 
 
 ## commands:
