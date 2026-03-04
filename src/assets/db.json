@@ -95,6 +95,7 @@
       ]
     },
     {
+      "id": "f6b3",
       "Location": "Amsterdam",
       "Date": "2026-02-21",
       "Damage": [
@@ -138,8 +139,7 @@
           "Remarks": "",
           "Pictures": []
         }
-      ],
-      "id": "f6b3"
+      ]
     },
     {
       "id": "6e06",
@@ -232,59 +232,6 @@
           "Action": "accepteren",
           "Remarks": "",
           "Pictures": []
-        }
-      ]
-    },
-    {
-      "id": "6367",
-      "Location": "test",
-      "Date": "2026-03-01",
-      "Damage": [
-        {
-          "Location": "",
-          "DamageNew": false,
-          "Type": "",
-          "Date": "",
-          "Acute": false,
-          "Description": "",
-          "Pictures": []
-        }
-      ],
-      "OverdueMaintenance": [
-        {
-          "Location": "",
-          "Type": "",
-          "Acute": false,
-          "CostIndication": "",
-          "Pictures": []
-        }
-      ],
-      "TechnicalInstallations": [
-        {
-          "Location": "",
-          "Type": "",
-          "Errors": "",
-          "TestProcedure": [],
-          "Approved": false,
-          "Remarks": "",
-          "Pictures": []
-        }
-      ],
-      "Modifications": [
-        {
-          "Documentation": [],
-          "Location": "",
-          "ExecutedBy": "",
-          "Description": "",
-          "Action": "",
-          "Remarks": "",
-          "Pictures": [
-            {
-              "id": "66be3e20-99c8-4110-b9f1-a99b40358db5",
-              "name": "Logo.png",
-              "type": "image/png"
-            }
-          ]
         }
       ]
     }
