@@ -21,7 +21,7 @@
         <v-hover v-slot="{ isHovering, props}">        
         <v-btn 
         v-bind="props"
-        :to="{name: 'Settings'}" 
+        @click="router.push({name: 'Settings'})" 
         title="instellingen" 
         :size="xs ? '25' : (sm ? '35' : '45')" 
         :class="[isHovering ? 'bg-white text-custom-color' : 'bg-cardBg', ' rounded-circle', 'mx-4']">
