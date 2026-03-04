@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { createInspection } from '@/models/Inspections.js'
 import { API_URL } from '@/config'
+import { defaultInspection } from '@/models/defaultInspection'
 
 const BASE_URL = API_URL
 
@@ -8,7 +9,7 @@ export const useInspectionStore = defineStore('inspection', {
   state: () => ({
     submittedInspections: [],
     currentInspection: null,
-    formInspection: null,
+    formInspection: JSON.parse(JSON.stringify(defaultInspection)),
     loadingInitial: false,
     loadingAction: false,
     sortAsc: true,
@@ -123,7 +124,7 @@ export const useInspectionStore = defineStore('inspection', {
     },
 
     clearFormInspection() {
-      this.formInspection = null
+      this.formInspection = this.formInspection = JSON.parse(JSON.stringify(defaultInspection))
     },
 
     toggleSort() {
