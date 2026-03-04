@@ -17,7 +17,7 @@ export const useAuthStore = defineStore('auth', {
 
       await new Promise(resolve => setTimeout(resolve, 300))
 
-      if (username === 'sidney' && password === 'test123') {
+      if (username.trim().toLowerCase() === 'sidney' && password === 'test123') {
         this.generatedCode = String(Math.floor(Math.random() * 900000) + 100000)
         this.step = 2
         return true
