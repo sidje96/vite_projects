@@ -14,10 +14,17 @@ export const useInspectionStore = defineStore('inspection', {
     loadingAction: false,
     sortAsc: true,
     error: null,
+    errorMsg: null,
     pendingSync: []
   }),
 
-  persist: true,
+  persist: {
+    paths: [
+      'submittedInspections',
+      'pendingSync',
+      'formInspection'
+    ]
+  },
 
   getters: {
     sortedInspections(state) {
@@ -35,23 +42,49 @@ export const useInspectionStore = defineStore('inspection', {
   actions: {
     async fetchInspections() {
       this.loadingInitial = true
+      this.error = null
+      this.errorMsg = null
+
       try {
+        if (!navigator.onLine) {
+          this.error = 'offline'
+          this.errorMsg = 'Geen internetverbinding'
+          return
+        }
+
         const res = await fetch(`${BASE_URL}/inspections`)
+
+        if (!res.ok) {
+          throw new Error(`Server error: ${res.status}`)
+        }
+
         const data = await res.json()
 
         await new Promise(resolve => setTimeout(resolve, 500))
 
         this.submittedInspections = data.map(item => createInspection(item))
+
       } catch (err) {
-        this.error = err
-      } finally { 
+        this.error = 'server'
+        this.errorMsg = 'De server reageert niet'
+        console.error(err)
+
+      } finally {
         this.loadingInitial = false
       }
     },
 
     async addInspection(data) {
       this.loadingAction = true
+      this.error = null
+
       try {
+        if (!navigator.onLine) {
+          this.pendingSync.push({ type: 'add', data })
+          this.submittedInspections.push(data)
+          return
+        }
+
         const res = await fetch(`${BASE_URL}/inspections`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -71,7 +104,22 @@ export const useInspectionStore = defineStore('inspection', {
 
     async deleteInspection(id) {
       this.loadingAction = true
+
       try {
+        if (!navigator.onLine) {
+          this.pendingSync.push({ type: 'delete', id })
+
+          this.submittedInspections = this.submittedInspections.filter(
+            insp => insp.id !== id
+          )
+
+          if (this.currentInspection?.id === id) {
+            this.currentInspection = null
+          }
+
+          return
+        }
+
         await fetch(`${BASE_URL}/inspections/${id}`, { method: "DELETE" })
         this.submittedInspections = this.submittedInspections.filter(
           insp => insp.id !== id
@@ -86,7 +134,18 @@ export const useInspectionStore = defineStore('inspection', {
     
     async updateInspection(updated) {
       this.loadingAction = true
+
       try {
+        if (!navigator.onLine) {
+          this.pendingSync.push({ type: 'update', data: updated })
+
+          const index = this.submittedInspections.findIndex( i => i.id === updated.id)
+          if (index !== -1) {
+            this.submittedInspections[index] = updated
+          }
+          return
+        } 
+
         const res = await fetch(`${BASE_URL}/inspections/${updated.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -97,7 +156,7 @@ export const useInspectionStore = defineStore('inspection', {
 
         const index = this.submittedInspections.findIndex(i => i.id === saved.id)
         if (index !== -1) {
-          this.submittedInspections[index] = updated
+          this.submittedInspections[index] = saved
         }
 
         await this.fetchInspections()
@@ -117,6 +176,23 @@ export const useInspectionStore = defineStore('inspection', {
 
     removePendingSync(id) {
       this.pendingSync = this.pendingSync.filter(i => i.id !== id)
+    },
+
+    async flushPendingSync() {
+      const queue = [...this.pendingSync]
+      this.pendingSync = []
+
+      for (const item of queue) {
+        if (item.type === 'add') {
+          await this.addInspection(item.data)
+        }
+        if (item.type === 'update') {
+          await this.updateInspection(item.data)
+        }
+        if (item.type === 'delete') {
+          await this.deleteInspection(item.id)
+        }
+      }
     },
 
     setFormInspection(data) {

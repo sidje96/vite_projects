@@ -44,9 +44,15 @@ const vuetify = createVuetify({
 
 })
 
+const app = createApp(App)
 
-createApp(App)
-    .use(router)
-    .use(vuetify)
-    .use(pinia)
-    .mount('#app')
+app.use(router)
+app.use(vuetify)
+app.use(pinia)
+
+window.addEventListener('online', () => {
+  const store = useInspectionStore()
+  store.flushPendingSync()
+})
+
+app.mount('#app')

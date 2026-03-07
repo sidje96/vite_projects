@@ -11,9 +11,10 @@ const store = useInspectionStore()
 
 const sortedInspections = computed(() => store.sortedInspections)
 
-onMounted(() => {
-  store.fetchInspections()
+onMounted(async () => {
+  await store.fetchInspections()
 })
+
 
 function selectInspection(inspection) {
   if (store.currentInspection?.id === inspection.id) {

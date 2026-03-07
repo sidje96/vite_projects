@@ -4,8 +4,7 @@ import SettingsView from '../views/Settings.vue'
 import KnowledgeView from '../views/KnowledgeBase.vue'
 import CompletedView from '../views/Completed.vue'
 import ScheduledView from '../views/Scheduled.vue'
-import ActiveTaskView from '../views/ActiveTask.vue'
-import InformationView from '../views/Information.vue'
+import SupportView from '../views/Support.vue'
 import FormView from '../views/FormView.vue'
 import LoginView from '../views/Login/Login.vue'
 import TwoFactorAuth from '../views/Login/TwoFactor.vue'
@@ -26,8 +25,7 @@ const routes = [
       { path: 'knowledgebase', name: 'KnowledgeBase', component: KnowledgeView },
       { path: 'completed', name: 'Completed', component: CompletedView },
       { path: 'scheduled', name: 'Scheduled', component: ScheduledView },
-      { path: 'active-task', name: 'ActiveTask', component: ActiveTaskView },
-      { path: 'information', name: 'Information', component: InformationView },
+      { path: 'support', name: 'Support', component: SupportView },
       { path: 'form', name: 'Form', component: FormView }
     ]
   },
