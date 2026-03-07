@@ -16,6 +16,8 @@ import { VFileUpload } from 'vuetify/labs/VFileUpload'
 import { createPinia } from "pinia"
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
+import { useInspectionStore } from './stores/inspection'
+
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
