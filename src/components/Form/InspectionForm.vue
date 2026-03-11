@@ -7,8 +7,11 @@ import TechForm from "./TechForm.vue"
 import ModForm from './ModForm.vue'
 import router from '@/router'
 import { defaultInspection } from '@/models/defaultInspection'
+import { useInspectionSubmit } from '@/composables/useInspectionSubmit'
 
 const store = useInspectionStore()
+
+const { submitInspection, loading } = useInspectionSubmit()
 
 const isEdit = computed(() => !!store.currentInspection)
 const required = v => !!v || 'Dit veld is verplicht'
@@ -25,39 +28,9 @@ async function submitForm() {
     return
   }
 
-  const insp = inspection.value
+  await submitInspection(inspection.value, isEdit.value)
 
-  const copy = {
-    ...insp,
-    Damage: insp.Damage.map(d => ({
-      ...d,
-      Pictures: [...d.Pictures]
-    })),
-    OverdueMaintenance: insp.OverdueMaintenance.map(o => ({
-      ...o,
-      Pictures: [...o.Pictures]
-    })),
-    TechnicalInstallations: insp.TechnicalInstallations.map(t => ({
-      ...t,
-      TestProcedure: [...t.TestProcedure],
-      Pictures: [...t.Pictures]
-    })),
-    Modifications: insp.Modifications.map(m => ({
-      ...m,
-      Documentation: [...m.Documentation],
-      Pictures: [...m.Pictures]
-    }))
-  }
-
-  if (isEdit.value) {
-    store.updateInspection(copy)
-    router.push({ name: 'Completed' })
-  } else {
-    store.addInspection(copy)
-  }
-
-resetForm()
-
+  resetForm()
 }
 
 function resetForm() {
