@@ -25,7 +25,6 @@ const routes = [
       { path: 'knowledgebase', name: 'KnowledgeBase', component: KnowledgeView },
       { path: 'completed', name: 'Completed', component: CompletedView },
       { path: 'scheduled', name: 'Scheduled', component: ScheduledView },
-      { path: 'support', name: 'Support', component: SupportView },
       { path: 'form', name: 'Form', component: FormView }
     ]
   },
