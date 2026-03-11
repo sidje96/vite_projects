@@ -1,4 +1,6 @@
 <script setup>
+import BackButton from '@/components/BackButton.vue';
+
 const pageData = [
   {
     name: "Modificaties",
@@ -47,7 +49,8 @@ const pageData = [
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" class="bg-custom-color">
+      <v-col cols="12" class="bg-custom-color d-flex align-center ga-2">
+        <back-button />
         <h2>Kennisbase</h2>
       </v-col>
 
