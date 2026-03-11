@@ -24,8 +24,8 @@
 
     </v-dialog>
 
-    <v-snackbar v-model="snackbar" color="warning" timeout="5000" close>
-      <span>Deze functionaliteit werkt nog niet voor dit prototype</span>
+    <v-snackbar v-model="snackbar" location="top" color="warning" timeout="5000">
+      <span>De functionaliteit om een ticket aan de klantenservice te sturen werkt nog niet</span>
       <template v-slot:actions>
         <v-btn
         size="small"

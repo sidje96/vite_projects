@@ -61,7 +61,7 @@
                         icon="mdi-delete"
                         color="red"
                         variant="text"
-                        @click="notifications.remove(n.id)"
+                        @click="notify(() => notifications.remove(n.id))"
                     />
                     </template>
                 </v-list-item>
@@ -72,7 +72,7 @@
                 <v-btn
                 block
                 color="red"
-                @click="notifications.clearAll"
+                @click="notify(() => notifications.clearAll())"
                 >
                 Alles verwijderen
                 </v-btn>
@@ -101,6 +101,17 @@
         </v-btn>
         </v-hover>   
     </v-toolbar>
+    <v-snackbar v-model="snackbar" location="top" color="warning" timeout="5000" close>
+        <span>Deze notificaties zijn gesimuleerd en komen terug na een refresh.</span>
+        <template v-slot:actions>
+        <v-btn
+        size="small"
+          icon="mdi-close"
+          @click="snackbar = false"
+        >
+        </v-btn>
+      </template>
+    </v-snackbar>
 </template>
 
 <script setup>
@@ -111,16 +122,22 @@ import { useInspectionStore } from '@/stores/inspection'
 import { storeToRefs } from 'pinia'
 import LogoWithText from '@/assets/LogoWithText.png'
 import { useNotificationStore } from '@/stores/notifications'
-import { mergeProps } from 'vue'
+import { mergeProps, ref } from 'vue'
 
 const notifications = useNotificationStore()
 
 const auth = useAuthStore()
 const router = useRouter()
+const snackbar = ref(false)
 
 function logout() {
   auth.logout()
   router.push('/auth/login')
+}
+
+function notify(action) {
+    action()
+    snackbar.value = true
 }
 
 const { xs, sm } = useDisplay()
