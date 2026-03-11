@@ -9,7 +9,11 @@ const { formatDate } = useDate()
 
 const store = useInspectionStore()
 
-const sortedInspections = computed(() => store.sortedInspections)
+const inspections = computed(() => {
+  if (!props.Status) return store.sortedInspections
+  return store.inspectionsByStatus(props.Status)
+})
+
 
 const props = defineProps({
   Status: {
@@ -65,6 +69,9 @@ function confirmDelete(id) {
     <v-progress-circular indeterminate size="64" color="custom-color" />
   </v-overlay>
   <div v-if="store.loadingAction || store.loadingInitial">
+    <v-skeleton-loader 
+      type="heading"
+    />
     <v-skeleton-loader
       type="list-item-two-line"
       class="mb-2"
@@ -92,7 +99,7 @@ function confirmDelete(id) {
 
         <v-list>
           <v-list-item
-            v-for="inspection in sortedInspections"
+            v-for="inspection in inspections"
             :key="inspection.id"
             @click="selectInspection(inspection)"
             :active="inspection.id === store.currentInspection?.id"
