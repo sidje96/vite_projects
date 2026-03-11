@@ -5,7 +5,7 @@ import InspectionList from '@/components/List/InspectionList.vue'
 import { useDisplay } from 'vuetify'
 
 const store = useInspectionStore()
-const { xs, sm } = useDisplay()
+const { xs } = useDisplay()
 
 function newInspection() {
     store.currentInspection = null
