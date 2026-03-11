@@ -22,8 +22,8 @@ import { useDisplay } from 'vuetify'
 const router = useRouter()
 const { xs, sm } = useDisplay()
 
-const size = xs.value ? 25 : (sm.value ? 35 : 45)
-const iconSize = xs.value ? 20 : (sm.value ? 30 : 35)
+const size = xs.value ? 25 : (sm.value ? 35 : 40)
+const iconSize = xs.value ? 20 : (sm.value ? 30 : 30)
 
 function goBack() {
   if (window.history.length > 1) {
