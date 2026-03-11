@@ -15,8 +15,18 @@ const items = defineModel()
     <v-row no-gutters class="w-100">
         <v-col cols="12" md="4"><strong>Documentatie</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">
-        <span v-if="!item.Documentation || item.Documentation.length === 0">Geen documentatie</span>
-        <span v-else>{{ item.Documentation[0].name }}</span>
+        <span v-if="!item.Documentation || item.Documentation.length === 0">Geen bestanden</span>
+        <span v-else>
+            <div v-for="(pdf, i) in item.Documentation" 
+            :key="i"
+            >
+            <v-icon color="red" size="20">mdi-file-pdf-box</v-icon>
+                <span class="ml-2">
+                PDF {{ i + 1 }}
+                </span>
+            <span v-if="i < item.Pictures.length - 1">, </span>
+            </div>
+        </span>
         </v-col>
 
         <v-col cols="12" md="4"><strong>Locatie</strong></v-col>
@@ -36,12 +46,15 @@ const items = defineModel()
 
         <v-col cols="12" md="4"><strong>Foto's</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">
-        <span v-if="!item.Pictures || item.Pictures.length === 0">Geen foto's</span>
+        <span v-if="!item.Pictures || item.Pictures.length === 0">Geen Foto's</span>
         <span v-else>
-            <span v-for="(file, i) in item.Pictures" :key="i">
-            {{ file.name }}
-            <span v-if="i < item.Pictures.length - 1">, </span>
-            </span>
+            <template v-for="(pic, i) in item.Pictures" :key="i">
+                <img 
+                :src="pic"
+                style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;"
+                >
+                <span v-if="i < item.Pictures.length - 1">, </span>
+            </template>
         </span>
         </v-col>
     </v-row>

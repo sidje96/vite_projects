@@ -27,12 +27,15 @@ const items = defineModel()
 
         <v-col cols="12" md="4"><strong>Foto's</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">
-        <span v-if="!item.Pictures || item.Pictures.length === 0">No pictures</span>
+        <span v-if="!item.Pictures || item.Pictures.length === 0">Geen Foto's</span>
         <span v-else>
-            <span v-for="(file, i) in item.Pictures" :key="i">
-            {{ file.name }}
-            <span v-if="i < item.Pictures.length - 1">, </span>
-            </span>
+            <template v-for="(pic, i) in item.Pictures" :key="i">
+                <img 
+                :src="pic"
+                style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;"
+                >
+                <span v-if="i < item.Pictures.length - 1">, </span>
+            </template>
         </span>
         </v-col>
     </v-row>
