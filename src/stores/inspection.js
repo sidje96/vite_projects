@@ -34,8 +34,18 @@ export const useInspectionStore = defineStore('inspection', {
       return state.submittedInspections.filter(i => i.Status === "Scheduled").length
     },
 
-    inspectionsByStatus: (state) => (status) =>
-      state.submittedInspections.filter(i => i.Status === status),
+    inspectionsByStatus: (state) => (status) => {
+      const list = state.submittedInspections.filter(i => i.Status === status)
+
+      return [...list].sort((a, b) => {
+        const dateA = new Date(a.Date)
+        const dateB = new Date(b.Date)
+
+        return state.sortAsc
+          ? dateB - dateA
+          : dateA - dateB
+      })
+    },
 
     sortedInspections(state) {
       return [...state.submittedInspections].sort((a, b) => {
