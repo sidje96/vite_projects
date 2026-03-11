@@ -3,18 +3,34 @@
         <v-row>
             <v-col cols="6">
                 <v-btn block :to="{ name: 'Scheduled' }" stacked>
-                    <v-badge location="top right" offset-x="5" offset-y="-15" content="+" color="custom-color">
-                        <v-icon class="mt-1" size="80">mdi-bookmark-outline</v-icon>
-                        <span class="textstyle text-sm-body-2 text-md-h6">Gepland</span>
-                    </v-badge>
+                    <v-badge v-if="numberScheduled > 0" 
+                        class="d-block" 
+                        location="top right" 
+                        offset-x="-25"
+                        width="30" 
+                        height="30" 
+                        rounded="circle" 
+                        :content="numberScheduled" 
+                        color="custom-color"
+                        />                    
+                    <v-icon class="mt-1" size="80">mdi-bookmark-outline</v-icon>
+                    <span class="textstyle text-sm-body-2 text-md-h6">Gepland</span>
                 </v-btn>
             </v-col>
             <v-col cols="6">
                 <v-btn block :to="{ name: 'Completed' }" stacked>
-                    <v-badge class="d-block" location="top right" offset-x="15" offset-y="-25" width="30" height="30" rounded="circle" :content="number" color="custom-color">
-                        <v-icon class="mt-1" size="80">mdi-check-circle</v-icon>
-                        <span class="textstyle text-sm-body-2 text-md-h6">Afgerond</span>
-                    </v-badge>  
+                    <v-badge v-if="numberCompleted > 0" 
+                        class="d-block" 
+                        location="top right" 
+                        offset-x="-25" 
+                        width="30" 
+                        height="30" 
+                        rounded="circle" 
+                        :content="numberCompleted" 
+                        color="custom-color"
+                        />
+                    <v-icon class="mt-1" size="80">mdi-check-circle</v-icon>
+                    <span class="textstyle text-sm-body-2 text-md-h6">Afgerond</span> 
                 </v-btn>
             </v-col>
         </v-row>
@@ -37,14 +53,20 @@
 
 <script setup>
 import { useInspectionStore } from '@/stores/inspection';
-import { onMounted, ref } from 'vue';
+import { onMounted, computed } from 'vue';
 
 const store = useInspectionStore()
 onMounted(() => {
     store.fetchInspections()
 })
 
-const number = store.sortedInspections.length
+const numberCompleted = computed(() =>
+  store.sortedInspections.filter(i => i.Status === "Completed").length
+)
+
+const numberScheduled = computed(() =>
+  store.sortedInspections.filter(i => i.Status === "Scheduled").length
+)
 
 </script>
 

@@ -11,8 +11,21 @@ const store = useInspectionStore()
 
 const sortedInspections = computed(() => store.sortedInspections)
 
+const props = defineProps({
+  Status: {
+    type: String,
+    required: false,
+    default: null
+  }
+})
+
 onMounted(async () => {
-  await store.fetchInspections()
+  if (props.Status) {
+    await store.fetchInspectionsByStatus(props.Status)
+  }
+  else {
+    await store.fetchInspections()
+  }
 })
 
 
@@ -58,7 +71,7 @@ function confirmDelete(id) {
       <!-- LEFT SIDE: LIST -->
       <v-col cols="12" md="6">
         <v-row>
-          <h2 class="text-h5 font-weight-bold mb-4 text-custom-color">Inspecties</h2>
+          <h2 class="text-h6 font-weight-bold mb-4 text-custom-color">{{ Status == "Scheduled" ? 'Ingeplande Inspecties' : 'Afgeronde Inspecties'}}</h2>
           <v-spacer/>
           <v-btn size="small" @click="store.toggleSort()">
             Datum 

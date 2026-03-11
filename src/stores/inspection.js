@@ -114,6 +114,26 @@ export const useInspectionStore = defineStore('inspection', {
       }
     },
 
+    async fetchInspectionsByStatus(status) {
+      this.loadingInitial = true
+      this.error = null
+      this.errorMsg = null
+
+      try {
+        const res = await fetch(`${BASE_URL}/inspections?Status=${status}`)
+        if (!res.ok) throw new Error(`Server error: ${res.status}`)
+
+        const data = await res.json()
+        this.submittedInspections = data.map(item => createInspection(item))
+
+      } catch (err) {
+        this.error = 'server'
+        this.errorMsg = 'De server reageert niet'
+      } finally {
+        this.loadingInitial = false
+      }
+    },
+
     async deleteInspection(id, isSync = false) {
       this.loadingAction = true
 

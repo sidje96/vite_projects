@@ -4,6 +4,7 @@
       "id": "6670",
       "Location": "Stadshart",
       "Date": "2026-02-13",
+      "Status": "Scheduled",
       "Damage": [
         {
           "Location": "Oostwaarts",
@@ -51,6 +52,7 @@
       "id": "4647",
       "Location": "Den Haag",
       "Date": "2026-02-14",
+      "Status": "Scheduled",
       "Damage": [
         {
           "Location": "",
@@ -98,6 +100,7 @@
       "id": "f6b3",
       "Location": "Amsterdam",
       "Date": "2026-02-21",
+      "Status": "Completed",
       "Damage": [
         {
           "Location": "Lego house",
@@ -145,6 +148,7 @@
       "id": "6e06",
       "Location": "Den haag",
       "Date": "2026-01-26",
+      "Status": "Completed",
       "Damage": [
         {
           "Location": "Domtoren",
@@ -192,6 +196,7 @@
       "id": "359b",
       "Location": "Zoetermeer",
       "Date": "2026-02-13",
+      "Status": "Completed",
       "Damage": [
         {
           "Location": "",

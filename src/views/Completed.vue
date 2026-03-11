@@ -1,5 +1,5 @@
 <template>
-    <InspectionList/>
+    <InspectionList Status="Completed"/>
 </template>
 
 <script setup>

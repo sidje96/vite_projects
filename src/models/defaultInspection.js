@@ -1,6 +1,7 @@
 export const defaultInspection = {
   Location: '',
   Date: new Date().toISOString().slice(0, 10),
+  Status: "Scheduled",
   Damage: [{
     Location: '',
     DamageNew: false,

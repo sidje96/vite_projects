@@ -13,6 +13,10 @@ const store = useInspectionStore()
 const isEdit = computed(() => !!store.currentInspection)
 const required = v => !!v || 'Dit veld is verplicht'
 const form = ref(null)
+const statusOptions = [
+  {label: 'Gepland', value: "Scheduled"},
+  {label: 'Afgerond', value: "Completed"}
+]
 
 async function submitForm() {
   const { valid } = await form.value.validate()
@@ -107,7 +111,14 @@ watch(
     <v-form ref="form" validate-on="submit">
       <v-text-field label="Locatie" v-model="inspection.Location" :rules="[required]"/>
       <v-text-field label="Datum" type="date" v-model="inspection.Date" :rules="[required]"/>
-
+      <v-select
+      v-model="inspection.Status" 
+      :rules="[required]"
+      label="Status"
+      :items="statusOptions"
+      item-title="label"
+      item-value="value"
+      />
       <!-- Schade -->
       <v-expansion-panels v-model="damagePanel" class="mb-4">
         <v-expansion-panel value="damage">

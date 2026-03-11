@@ -3,7 +3,7 @@ export function createInspection(data) {
     id: data.id,
     Location: data.Location,
     Date: data.Date,
-
+    Status: data.Status,
     Damage: data.Damage?.map(d => ({
       Location: d.Location,
       DamageNew: d.DamageNew,

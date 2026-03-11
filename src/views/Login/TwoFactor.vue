@@ -87,13 +87,12 @@ const required = v => !!v || 'Dit veld is verplicht'
         </v-alert>
         
         <v-form ref="form" validate-on="submit" @submit.prevent="verify">
-            <v-text-field
-                v-model="code"
-                label="Code"
-                variant="outlined"
-                maxlength="6"
-                class="mb-4"
-                :rules="[required]"
+            <v-otp-input
+            v-model="code"
+            :disabled="loading"
+            :error="auth.error"\
+            class="text-custom-color"
+            :rules="required"
             />
 
             <button type="submit" class="d-none"></button>
