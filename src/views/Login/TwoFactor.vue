@@ -88,6 +88,7 @@ const required = v => !!v || 'Dit veld is verplicht'
         
         <v-form ref="form" validate-on="submit" @submit.prevent="verify">
             <v-otp-input
+            autofocus
             v-model="code"
             :disabled="loading"
             :error="auth.error"\
