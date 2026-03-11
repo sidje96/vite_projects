@@ -7,7 +7,16 @@
                 contain
             />
         </router-link>
-        <v-spacer />        
+        <v-alert
+        v-if="errorMsg"
+        type="error"
+        class="mx-4"
+        elevation="2">
+            {{ errorMsg }}
+        </v-alert>
+        <template v-else>
+            <v-spacer />
+        </template>        
         <v-hover v-slot="{ isHovering, props }">
             <v-btn
             v-bind="props" 
@@ -35,6 +44,8 @@
 import { useRouter } from 'vue-router'
 import { useDisplay } from 'vuetify'
 import { useAuthStore } from '@/stores/auth'
+import { useInspectionStore } from '@/stores/inspection'
+import { storeToRefs } from 'pinia'
 
 const auth = useAuthStore()
 const router = useRouter()
@@ -45,5 +56,9 @@ function logout() {
 }
 
 const { xs, sm } = useDisplay()
+
+const store = useInspectionStore()
+const { errorMsg } = storeToRefs(store)
+
 
 </script>
