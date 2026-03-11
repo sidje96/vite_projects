@@ -27,6 +27,13 @@ export const useInspectionStore = defineStore('inspection', {
   },
 
   getters: {
+    numberCompleted(state) {
+      return state.submittedInspections.filter(i => i.Status === "Completed").length
+    },
+    numberScheduled(state) {
+      return state.submittedInspections.filter(i => i.Status === "Scheduled").length
+    },
+
     sortedInspections(state) {
       return [...state.submittedInspections].sort((a, b) => {
         const dateA = new Date(a.Date)
@@ -124,6 +131,9 @@ export const useInspectionStore = defineStore('inspection', {
         if (!res.ok) throw new Error(`Server error: ${res.status}`)
 
         const data = await res.json()
+
+        await new Promise(resolve => setTimeout(resolve, 250))
+
         this.submittedInspections = data.map(item => createInspection(item))
 
       } catch (err) {
