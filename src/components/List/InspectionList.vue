@@ -19,6 +19,13 @@ const props = defineProps({
   }
 })
 
+const skeletonCount = computed(() => ({
+  Scheduled: store.numberScheduled,
+  Completed: store.numberCompleted
+}[props.Status] ?? 5)
+)
+
+
 onMounted(async () => {
   if (props.Status) {
     await store.fetchInspectionsByStatus(props.Status)
@@ -61,7 +68,7 @@ function confirmDelete(id) {
     <v-skeleton-loader
       type="list-item-two-line"
       class="mb-2"
-      v-for="n in sortedInspections.length"
+      v-for="n in skeletonCount"
       :key="n"
     />
   </div>
