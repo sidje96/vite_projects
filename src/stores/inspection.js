@@ -74,12 +74,16 @@ export const useInspectionStore = defineStore('inspection', {
       }
     },
 
-    async addInspection(data) {
+    async addInspection(data, isSync = false) {
       this.loadingAction = true
       this.error = null
 
       try {
-        if (!navigator.onLine) {
+        if (!data.id) {
+          data.id = Math.random().toString(36).slice(2, 6)
+        }
+
+        if (!isSync && !navigator.onLine) {
           this.pendingSync.push({ type: 'add', data })
           this.submittedInspections.push(data)
           return
@@ -94,7 +98,15 @@ export const useInspectionStore = defineStore('inspection', {
         await new Promise(resolve => setTimeout(resolve, 250))
 
         const saved = await res.json()
-        this.submittedInspections.push(saved)
+        const index = this.submittedInspections.findIndex(i => i.id === data.id)
+
+        if (index !== -1) {
+          this.submittedInspections[index] = saved
+        } else {
+          this.submittedInspections.push(saved)
+        }
+
+
       } catch (err) {
         this.error = err
       } finally {
@@ -102,11 +114,11 @@ export const useInspectionStore = defineStore('inspection', {
       }
     },
 
-    async deleteInspection(id) {
+    async deleteInspection(id, isSync = false) {
       this.loadingAction = true
 
       try {
-        if (!navigator.onLine) {
+        if (!isSync && !navigator.onLine) {
           this.pendingSync.push({ type: 'delete', id })
 
           this.submittedInspections = this.submittedInspections.filter(
@@ -132,11 +144,11 @@ export const useInspectionStore = defineStore('inspection', {
       }
     },
     
-    async updateInspection(updated) {
+    async updateInspection(updated, isSync = false) {
       this.loadingAction = true
 
       try {
-        if (!navigator.onLine) {
+        if (!isSync && !navigator.onLine) {
           this.pendingSync.push({ type: 'update', data: updated })
 
           const index = this.submittedInspections.findIndex( i => i.id === updated.id)
@@ -184,13 +196,13 @@ export const useInspectionStore = defineStore('inspection', {
 
       for (const item of queue) {
         if (item.type === 'add') {
-          await this.addInspection(item.data)
+          await this.addInspection(item.data, true)
         }
         if (item.type === 'update') {
-          await this.updateInspection(item.data)
+          await this.updateInspection(item.data, true)
         }
         if (item.type === 'delete') {
-          await this.deleteInspection(item.id)
+          await this.deleteInspection(item.id, true)
         }
       }
     },
