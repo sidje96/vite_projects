@@ -8,10 +8,13 @@ import ModForm from './ModForm.vue'
 import router from '@/router'
 import { defaultInspection } from '@/models/defaultInspection'
 import { useInspectionSubmit } from '@/composables/useInspectionSubmit'
+import BackButton from '../BackButton.vue'
+import { useDisplay } from 'vuetify'
 
 const store = useInspectionStore()
 
 const { submitInspection, loading } = useInspectionSubmit()
+const { xs } = useDisplay()
 
 const isEdit = computed(() => !!store.currentInspection)
 const required = v => !!v || 'Dit veld is verplicht'
@@ -75,8 +78,10 @@ watch(
   </v-overlay>
 
   <v-container>
-
-    <h2>Inspectie Formulier</h2>
+    <v-sheet class="d-flex align-center ga-4 bg-custom-color pa-2" :height="xs ? '3rem' : '5rem'">
+      <BackButton />
+      <h2>Inspectie Formulier</h2>
+    </v-sheet>
 
     <h3>{{ isEdit ? 'Inspectie bewerken:' : 'Nieuwe inspectie:' }}</h3>
 
