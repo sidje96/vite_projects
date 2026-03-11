@@ -4,6 +4,7 @@ import InspectionDetail from './InspectionDetails.vue'
 import { useInspectionStore } from '@/stores/inspection'
 import { useDate } from '@/composables/useDate.js'
 import router from '@/router'
+import BackButton from '../BackButton.vue'
 
 const { formatDate } = useDate()
 
@@ -82,21 +83,18 @@ function confirmDelete(id) {
 
   <v-container class="py-6" v-else>
     <v-row>
-      <!-- LEFT SIDE: LIST -->
       <v-col cols="12" md="6">
-        <v-row>
-          <h2 class="text-h6 font-weight-bold mb-4 text-custom-color">{{ Status == "Scheduled" ? 'Ingeplande Inspecties' : 'Afgeronde Inspecties'}}</h2>
-          <v-spacer/>
-          <v-btn size="small" @click="store.toggleSort()">
-            Datum 
-            <span class="ml-2">
-              <v-icon v-if="store.sortAsc">mdi-sort-ascending</v-icon>
-              <v-icon v-else>mdi-sort-descending</v-icon>
-            </span>
-          </v-btn>
-          <v-spacer></v-spacer>
-        </v-row>
-
+          <v-sheet class="d-flex align-center ga-4 ma-4">
+            <BackButton />
+            <h2 class="text-h6 font-weight-bold text-custom-color">{{ Status == "Scheduled" ? 'Ingeplande Inspecties' : 'Afgeronde Inspecties'}}</h2>
+            <v-btn size="small" @click="store.toggleSort()">
+              Datum 
+              <span class="ml-2">
+                <v-icon v-if="store.sortAsc">mdi-sort-ascending</v-icon>
+                <v-icon v-else>mdi-sort-descending</v-icon>
+              </span>
+            </v-btn>
+          </v-sheet>
         <v-list>
           <v-list-item
             v-for="inspection in inspections"
