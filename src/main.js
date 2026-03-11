@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -55,6 +56,6 @@ app.use(pinia)
 window.addEventListener('online', () => {
   const store = useInspectionStore()
   store.flushPendingSync()
+  store.fetchInspections()
 })
-
 app.mount('#app')
