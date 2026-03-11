@@ -34,6 +34,9 @@ export const useInspectionStore = defineStore('inspection', {
       return state.submittedInspections.filter(i => i.Status === "Scheduled").length
     },
 
+    inspectionsByStatus: (state) => (status) =>
+      state.submittedInspections.filter(i => i.Status === status),
+
     sortedInspections(state) {
       return [...state.submittedInspections].sort((a, b) => {
         const dateA = new Date(a.Date)
@@ -127,6 +130,12 @@ export const useInspectionStore = defineStore('inspection', {
       this.errorMsg = null
 
       try {
+        if (!navigator.onLine) {
+          this.error = 'offline'
+          this.errorMsg = 'Geen internetverbinding'
+          return
+        }
+
         const res = await fetch(`${BASE_URL}/inspections?Status=${status}`)
         if (!res.ok) throw new Error(`Server error: ${res.status}`)
 
