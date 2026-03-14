@@ -2,6 +2,7 @@
     <v-toolbar :elevation="10" color="hsl(0, 0%, 12%)">
         <router-link to="/">
             <v-img 
+                alt="Logo met tekst"
                 :src="LogoWithText"
                 :width=" xs ? 150 : 250"
                 contain
