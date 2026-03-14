@@ -19,22 +19,22 @@ const items = defineModel()
     <v-row no-gutters class="w-100">
         <v-col cols="12" md="4"><strong>Locatie</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">{{ item.Location || "-" }}</v-col>
-
+        <v-divider class="border-opacity-50" color="custom-color"/>
         <v-col cols="12" md="4"><strong>Nieuwe schade</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">{{ item.DamageNew ? "Ja" : "Nee" }}</v-col>
-
+        <v-divider class="border-opacity-50" color="custom-color"/>
         <v-col cols="12" md="4"><strong>Soort schade</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">{{ item.Type || "-"}}</v-col>
-        
+        <v-divider class="border-opacity-50" color="custom-color"/>
         <v-col cols="12" md="4"><strong>Datum</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">{{ formatDate(item.Date) || "-" }}</v-col>
-        
+        <v-divider class="border-opacity-50" color="custom-color"/>
         <v-col cols="12" md="4"><strong>Acute actie vereist</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">{{ item.Acute ? "Ja" : "Nee" }}</v-col>
-
+        <v-divider class="border-opacity-50" color="custom-color"/>
         <v-col cols="12" md="4"><strong>Omschrijving</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">{{ item.Description || "-" }}</v-col>
-
+        <v-divider class="border-opacity-50" color="custom-color"/>
         <v-col cols="12" md="4"><strong>Foto's</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">
         <span v-if="!item.Pictures || item.Pictures.length === 0">Geen Foto's</span>

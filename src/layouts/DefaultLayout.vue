@@ -1,7 +1,7 @@
 <script setup>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const color = ref("hsl(177, 100%, 40%)")
 const icons = [
@@ -23,7 +23,7 @@ const icons = [
       <router-view/>
     </v-main>
     
-    <Footer/>
+    <Footer />
   </v-app>
 </template>
 
