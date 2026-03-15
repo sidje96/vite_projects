@@ -44,4 +44,11 @@ Je hoeft dus niet de map te zoeken.
 #### Daarna
 `npm run dev`
 
+##### Toepassing accessibility
+Ik heb naar mijn mening goed opgelet en getest of alle elementen op de app goed zichtbaar zijn. en labels hebben voor screenreaders. of je met een toetesenbord over de app kan navigeren. en het lijkt erop dat de app wel WCAG 2.1 minimaal gehaald heeft.
 
+##### Sidenotes:
+Ik wilde de UI zo maken dat de kleuren allemaal in 1 keer aangepast konden worden. dit is bijna gelukt, maar met de colorpicker in de settings
+gingen sommige schaduwen van knoppen niet mee terwijl: als je de kant en klare knoppen gebruikt dan veranderen de knop schaduw kleuren wel en ik weet niet hoe ik dit anders kan doen of hoe ik dit moet oplossen.
+Wat ook nog niet werkt is het wachtwoord aanpassen en de notificaties werken ook niet zoals het hoort. Ze simuleren de notificaties en het aanpassen van het wachtwoord, maar om het wachtwoord echt aan te passen moet sowieso nog veel meer opgezet worden, want een wachtwoord mag natuurlijk niet ergens letterlijk in een store staan als deze in het echt ook gebruikt gaat worden. Maar voor dit prototype werkt het voor 1 user wel prima zo.
+Hosting heb ik gedaan via netlify. Dit was makkelijk op te zetten.
