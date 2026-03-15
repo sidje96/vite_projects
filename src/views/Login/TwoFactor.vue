@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
+import LogoWithText from '@/assets/LogoWithText.png'
 
 const auth = useAuthStore()
 const router = useRouter()
@@ -49,10 +50,11 @@ const required = v => !!v || 'Dit veld is verplicht'
     <v-card width="380" class="pa-6" color="loginBg">
         <div class="text-center mb-6">
             <v-img
-            src="/src/assets/LogoWithText.png"
-            width="100%"
-            class="mx-auto"
-            contain
+                alt="Logo met tekst"
+                :src="LogoWithText"
+                width="100%"
+                class="mx-auto"
+                contain
             />
         </div>
 
