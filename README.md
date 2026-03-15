@@ -52,3 +52,6 @@ Ik wilde de UI zo maken dat de kleuren allemaal in 1 keer aangepast konden worde
 gingen sommige schaduwen van knoppen niet mee terwijl: als je de kant en klare knoppen gebruikt dan veranderen de knop schaduw kleuren wel en ik weet niet hoe ik dit anders kan doen of hoe ik dit moet oplossen.
 Wat ook nog niet werkt is het wachtwoord aanpassen en de notificaties werken ook niet zoals het hoort. Ze simuleren de notificaties en het aanpassen van het wachtwoord, maar om het wachtwoord echt aan te passen moet sowieso nog veel meer opgezet worden, want een wachtwoord mag natuurlijk niet ergens letterlijk in een store staan als deze in het echt ook gebruikt gaat worden. Maar voor dit prototype werkt het voor 1 user wel prima zo.
 Hosting heb ik gedaan via netlify. Dit was makkelijk op te zetten.
+
+##### update:
+Ik heb de colorpicker toch werkende gekregen en de hele UI verandert mee.
