@@ -9,18 +9,29 @@ export function useAccentColor() {
     function normalizeColor(color) {
         if (!color) return null
 
-        if (typeof color === 'string') return color
+        if (typeof color === 'string' && color.startsWith('hsl')) {
+            const inner = color
+                .replace(/hsl[a]?\(/, '')
+                .replace(/\)/, '')
+                .trim()
 
-        if (typeof color === 'object') {
-        const h = Math.round(color.h ?? 0)
-        const s = Math.round(color.s ?? 0)
-        const l = Math.round(color.l ?? 0)
-        const a = color.a ?? 1
-        return `hsla(${h}, ${s}%, ${l}%, ${a})`
+            const [hslPart, alphaPart] = inner.split('/').map(v => v.trim())
+
+            const [hRaw, sRaw, lRaw] = hslPart.split(/\s+/)
+
+            const h = parseFloat(hRaw)
+            const s = parseFloat(sRaw) || 100
+            const l = parseFloat(lRaw) || 50
+            const a = isNaN(parseFloat(alphaPart)) ? 1 : parseFloat(alphaPart)
+
+
+            return `hsla(${h}, ${s}%, ${l}%, ${a})`
         }
 
         return null
     }
+
+
 
     function applyAccentColor(rawColor) {
         const color = normalizeColor(rawColor)
