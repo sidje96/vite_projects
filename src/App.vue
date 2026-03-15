@@ -9,3 +9,9 @@
 
   </router-view>
 </template>
+
+<script setup>
+import { useAccentColor } from '@/composables/useAccentColor'
+
+useAccentColor()
+</script>
