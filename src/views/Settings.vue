@@ -190,8 +190,9 @@ function saveInitials() {
                         <v-card-text>
                         <v-color-picker
                             v-model="store.prefersColor"
-                            mode="hsla"
+                            mode="hsl"
                             hide-inputs
+                            @update:modelValue="store.setColor"
                         />
                         </v-card-text>
 
