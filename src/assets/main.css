@@ -1,8 +1,16 @@
-.v-btn--variant-elevated {
-  --v-shadow-key-umbra-opacity: hsla(177, 100%, 34%, 0.4);
-  --v-shadow-key-penumbra-opacity: hsla(177, 100%, 34%, 0.3);
-  --v-shadow-key-ambient-opacity: hsla(177, 100%, 34%, 0.2);
+:root {
+  --custom-shadow-umbra: hsla(177, 100%, 34%, 0.4);
+  --custom-shadow-penumbra: hsla(177, 100%, 34%, 0.3);
+  --custom-shadow-ambient: hsla(177, 100%, 34%, 0.2);
 }
+
+
+.v-btn--variant-elevated {
+  --v-shadow-key-umbra-opacity: var(--custom-shadow-umbra);
+  --v-shadow-key-penumbra-opacity: var(--custom-shadow-penumbra);
+  --v-shadow-key-ambient-opacity: var(--custom-shadow-ambient);
+}
+
 
 #input-v-1:-webkit-autofill,
 #input-v-1:-webkit-autofill:hover,
