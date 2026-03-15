@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const userStore = defineStore('user', {
   state: () => ({
     initials: 'S',
-    prefersColor: null,
+    prefersColor: { h: 177, s: 100, l: 34, a: 1 },
     prefersDark: false,
   }),
 
