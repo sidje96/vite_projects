@@ -9,7 +9,13 @@ export const useAuthStore = defineStore('auth', {
     error: null
   }),
 
-  persist: true,
+  persist: {
+    paths: [
+      'user',
+      'isAuthenticated',
+      'step'
+    ]
+  },
 
   actions: {
     async login(username, password) {
@@ -17,7 +23,7 @@ export const useAuthStore = defineStore('auth', {
 
       await new Promise(resolve => setTimeout(resolve, 300))
 
-      if (username.trim().toLowerCase() === 'sidney' && password === 'test123') {
+      if (username.trim() === 'sidney' && password === 'test123') {
         this.generatedCode = String(Math.floor(Math.random() * 900000) + 100000)
         this.step = 2
         return true

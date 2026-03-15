@@ -1,9 +1,10 @@
 <script setup>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
-import { ref } from 'vue'
+import { userStore } from '@/stores/user';
 
-const color = ref("hsl(177, 100%, 40%)")
+const store = userStore()
+
 const icons = [
   {name: "square"}, 
   {name: "circle"},
@@ -15,7 +16,7 @@ const icons = [
   <v-app>
     <v-sheet class="d-flex justify-end" height="28" color="custom-color">
       <div v-for="icon in icons" :key="icon.name">
-        <v-icon size="small" :color="color" :icon="`mdi-${icon.name}`" class="mx-1" />
+        <v-icon size="small" :color="store.getShadowTint()" :icon="`mdi-${icon.name}`" class="mx-1" />
       </div>
     </v-sheet>
     <Header />

@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar :elevation="10" color="hsl(0, 0%, 12%)">
+    <v-toolbar :elevation="10" color="loginBg">
         <router-link to="/">
             <v-img 
                 alt="Logo met tekst"
@@ -29,7 +29,7 @@
                     icon
                     :size="xs ? '25' : (sm ? '35' : '45')"
                     :class="[
-                    isHovering ? 'bg-white text-custom-color' : 'bg-cardBg',
+                    isHovering ? 'bg-white text-custom-color' : 'bg-loginBg',
                     'rounded-circle',
                     'ml-4'
                     ]"
@@ -87,7 +87,7 @@
             @click="logout" 
             title="uitloggen" 
             :size="xs ? '25' : (sm ? '35' : '45')"
-            :class="[isHovering ? 'bg-white text-custom-color' : 'bg-cardBg', ' rounded-circle', 'ml-4']">
+            :class="[isHovering ? 'bg-white text-custom-color' : 'bg-loginBg', ' rounded-circle', 'ml-4']">
                 <v-icon :size="xs ? '20' : (sm ? '30' : '35')">mdi-logout</v-icon>
         </v-btn>
         </v-hover>
@@ -97,7 +97,7 @@
         @click="router.push({name: 'Settings'})" 
         title="instellingen" 
         :size="xs ? '25' : (sm ? '35' : '45')" 
-        :class="[isHovering ? 'bg-white text-custom-color' : 'bg-cardBg', ' rounded-circle', 'mx-4']">
+        :class="[isHovering ? 'bg-white text-custom-color' : 'bg-loginBg', ' rounded-circle', 'mx-4']">
             <v-icon :size="xs ? '20' : (sm ? '30' : '35')">mdi-cog</v-icon>
         </v-btn>
         </v-hover>   
