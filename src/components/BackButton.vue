@@ -6,7 +6,7 @@
       :size="size"
       :class="[
         isHovering ? 'bg-white text-custom-color' : 'bg-custom-color',
-        'rounded-circle'
+        'rounded-circle', 'ma-2'
       ]"
       @click="goBack"
     >
