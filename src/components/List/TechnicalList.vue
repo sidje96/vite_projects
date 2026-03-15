@@ -39,7 +39,7 @@ const items = defineModel()
         </v-col>
         <v-divider class="border-opacity-50" color="custom-color"/>        
         <v-col cols="12" md="4"><strong>Goedgekeurd</strong></v-col>
-        <v-col cols="12" md="8" class="text-md-right">{{ item.Approved ? "Yes" : "No" }}</v-col>
+        <v-col cols="12" md="8" class="text-md-right">{{ item.Approved ? "Ja" : "Nee" }}</v-col>
         <v-divider class="border-opacity-50" color="custom-color"/>        
         <v-col cols="12" md="4"><strong>Opmerkingen</strong></v-col>
         <v-col cols="12" md="8" class="text-md-right">{{ item.Remarks ? item.Remarks : "-" }}</v-col>

@@ -46,7 +46,7 @@ const required = v => !!v || 'Dit veld is verplicht'
 <template>
 <v-container class="fill-height d-flex align-center justify-center">
     
-    <v-card width="380" class="pa-6" color="cardBg">
+    <v-card width="380" class="pa-6" color="loginBg">
         <div class="text-center mb-6">
             <v-img
             src="/src/assets/LogoWithText.png"

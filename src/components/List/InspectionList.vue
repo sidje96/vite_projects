@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import InspectionDetail from './InspectionDetails.vue'
 import { useInspectionStore } from '@/stores/inspection'
 import { useDate } from '@/composables/useDate.js'
@@ -30,16 +30,18 @@ const skeletonCount = computed(() => ({
 }[props.Status] ?? 5)
 )
 
-
-onMounted(async () => {
-  if (props.Status) {
-    await store.fetchInspectionsByStatus(props.Status)
-  }
-  else {
-    await store.fetchInspections()
-  }
+onMounted(() => {
+  store.currentInspection = null
+  loadInspections()
 })
 
+async function loadInspections() {
+  if (props.Status) {
+    await store.fetchInspectionsByStatus(props.Status)
+  } else {
+    await store.fetchInspections()
+  }
+}
 
 function selectInspection(inspection) {
   if (store.currentInspection?.id === inspection.id) {

@@ -56,12 +56,10 @@ const pageData = [
 
       <template v-for="(category, cIndex) in pageData" :key="cIndex">
 
-        <!-- Titel -->
         <v-col cols="12">
           <v-card-title>{{ category.name }}</v-card-title>
         </v-col>
 
-        <!-- Items -->
         <v-col
           v-for="(item, index) in category.items"
           :key="index"
@@ -97,7 +95,6 @@ const pageData = [
           </v-dialog>
         </v-col>
 
-        <!-- Divider tussen categorieën, behalve na de laatste -->
         <v-col cols="12" v-if="cIndex < pageData.length - 1">
           <v-divider />
         </v-col>

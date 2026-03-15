@@ -39,7 +39,7 @@ const required = v => !!v || 'Dit veld is verplicht'
 
 <template>
     <v-container class="fill-height d-flex align-center justify-center">
-        <v-card width="380" color="cardBg" class="pa-6">
+        <v-card width="380" color="loginBg" class="pa-6">
             <div class="text-center mb-6">
                 <v-img
                     src="/src/assets/LogoWithText.png"
@@ -66,26 +66,38 @@ const required = v => !!v || 'Dit veld is verplicht'
                     hide-details="auto"
                     v-model="username"
                     label="Gebruikersnaam"
-                    prepend-inner-icon="mdi-account"
                     variant="outlined"
                     clearable
+                    color="custom-color"
                     class="mb-3"
                     :rules="[required]"
-                />
+                >
+                <template #prepend-inner>
+                    <v-icon color="custom-color">
+                        mdi-account
+                    </v-icon>
+                </template>
+                </v-text-field>
 
                 <v-text-field
                     v-model="password"
                     label="Wachtwoord"
                     :type="visible ? 'text' : 'password'"
-                    prepend-inner-icon="mdi-lock-outline"
                     variant="outlined"
+                    color="custom-color"
                     class="mb-4"
                     :rules="[required]"
                     >
+                    <template #prepend-inner>
+                        <v-icon color="custom-color">
+                            mdi-lock-outline
+                        </v-icon>
+                    </template>
                     <template #append-inner>
                         <v-tooltip :text="visible ? 'Verberg wachtwoord' : 'Toon wachtwoord'" location="bottom">
                         <template #activator="{ props }">
                             <v-icon
+                            color="custom-color"
                             v-bind="props"
                             @click="visible = !visible"
                             >
