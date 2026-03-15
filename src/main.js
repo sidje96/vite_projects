@@ -37,14 +37,23 @@ const vuetify = createVuetify({
     defaultTheme: 'light',
     themes: {
       light: {
+        dark: false,
         colors: {
           'custom-color': 'hsl(177, 100%, 34%)',
-          'cardBg': 'hsl(0, 0%, 12%)'
+          'cardBg': 'hsl(0, 0%, 100%)',
+          'loginBg': 'hsl(0, 0%, 12%)'
+        }
+      },
+      dark: {
+        dark: true,
+        colors: {
+          'custom-color': 'hsl(177, 100%, 34%)',
+          'cardBg': 'hsl(0, 0%, 7%)',
+          'loginBg': 'hsl(0, 0%, 16%)'
         }
       }
     }
   }
-
 })
 
 const app = createApp(App)
