@@ -93,7 +93,7 @@ const required = v => !!v || 'Dit veld is verplicht'
             autofocus
             v-model="code"
             :disabled="loading"
-            :error="auth.error"\
+            :error="auth.error"
             class="text-custom-color"
             :rules="required"
             />
