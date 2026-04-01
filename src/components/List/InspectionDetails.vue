@@ -97,6 +97,7 @@ const sections = computed(() => {
             </v-col>
           </v-row>
         </v-list-item>
+        
 
         <template v-for="section in sections" :key="section.title">
           <component

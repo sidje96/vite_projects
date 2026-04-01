@@ -44,7 +44,7 @@ async function loadInspections() {
 }
 
 function selectInspection(inspection) {
-  if (store.currentInspection?.id === inspection.id) {
+  if (store.currentInspection?.Id === inspection.Id) {
     store.currentInspection = null
   } else {
     store.currentInspection = inspection
@@ -56,9 +56,9 @@ function editInspection(inspection) {
   router.push({ name: 'Form' })
 }
 
-function confirmDelete(id) {
+function confirmDelete(Id) {
   if (confirm("Weet je zeker dat je deze inspectie wilt verwijderen?")) {
-    store.deleteInspection(id)
+    store.deleteInspection(Id)
   }
 }
 </script>
@@ -100,9 +100,9 @@ function confirmDelete(id) {
         <v-list>
           <v-list-item
             v-for="inspection in inspections"
-            :key="inspection.id"
+            :key="inspection.Id"
             @click="selectInspection(inspection)"
-            :active="inspection.id === store.currentInspection?.id"
+            :active="inspection.Id === store.currentInspection?.Id"
             class="text-custom-color"
           >
             <v-list-item-title class="font-weight-medium">
@@ -125,7 +125,7 @@ function confirmDelete(id) {
                 color="red"
                 variant="text"
                 :loading="store.loadingAction"
-                @click.stop="confirmDelete(inspection.id)"
+                @click.stop="confirmDelete(inspection.Id)"
               />
             </template>
 

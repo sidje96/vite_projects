@@ -9,13 +9,14 @@ const model = defineModel()
         <v-checkbox label="Acute actie vereist" v-model="model.Acute" />
         <v-text-field label="Kosten indicatie" v-model="model.CostIndication" />
         <v-label class="mb-1">Foto's</v-label>
-        <v-file-upload
+        <v-file-input
             v-model="model.Pictures"
             icon="mdi-upload"
             multiple
-            show-size
-            density="compact"
+            chips
             clearable
-            />
+            accept=".jpg, .jpeg, .png"
+            label="Foto's"
+        />
     </div>
 </template>

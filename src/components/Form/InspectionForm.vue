@@ -24,6 +24,20 @@ const statusOptions = [
   {label: 'Afgerond', value: "Completed"}
 ]
 
+function isEmptyObject(obj) {
+  return Object.values(obj).every(value =>
+    value === "" ||
+    value === false ||
+    (Array.isArray(value) && value.length === 0)
+  );
+}
+
+function cleanArray(arr) {
+  if (!Array.isArray(arr)) return [];
+  return arr.filter(item => !isEmptyObject(item));
+}
+
+
 async function submitForm() {
   const { valid } = await form.value.validate()
 
@@ -31,8 +45,12 @@ async function submitForm() {
     return
   }
 
-  await submitInspection(inspection.value, isEdit.value)
+  inspection.value.Damage = cleanArray(inspection.value.Damage)
+  inspection.value.OverdueMaintenance = cleanArray(inspection.value.OverdueMaintenance)
+  inspection.value.TechnicalInstallations = cleanArray(inspection.value.TechnicalInstallations)
+  inspection.value.Modifications = cleanArray(inspection.value.Modifications)
 
+  await submitInspection(inspection.value, isEdit.value)
   resetForm()
 }
 
@@ -57,9 +75,16 @@ watch(
   () => store.currentInspection,
   (value) => {
     if (value) {
-      store.setFormInspection(JSON.parse(JSON.stringify(value)))
+      const clone = JSON.parse(JSON.stringify(value));
+
+      if (clone.Damage.length === 0) clone.Damage = [{}];
+      if (clone.OverdueMaintenance.length === 0) clone.OverdueMaintenance = [{}];
+      if (clone.TechnicalInstallations.length === 0) clone.TechnicalInstallations = [{}];
+      if (clone.Modifications.length === 0) clone.Modifications = [{}];
+
+      store.setFormInspection(clone);
     } else {
-      store.setFormInspection(JSON.parse(JSON.stringify(defaultInspection)))
+      store.setFormInspection(JSON.parse(JSON.stringify(defaultInspection)));
     }
   },
   { immediate: true }

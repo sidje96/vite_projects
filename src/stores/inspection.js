@@ -73,10 +73,7 @@ export const useInspectionStore = defineStore('inspection', {
         }
 
         const res = await fetch(`${BASE_URL}/inspections`)
-
-        if (!res.ok) {
-          throw new Error(`Server error: ${res.status}`)
-        }
+        if (!res.ok) throw new Error(`Server error: ${res.status}`)
 
         const data = await res.json()
 
@@ -87,8 +84,6 @@ export const useInspectionStore = defineStore('inspection', {
       } catch (err) {
         this.error = 'server'
         this.errorMsg = 'De server reageert niet'
-        console.error(err)
-
       } finally {
         this.loadingInitial = false
       }
@@ -99,8 +94,8 @@ export const useInspectionStore = defineStore('inspection', {
       this.error = null
 
       try {
-        if (!data.id) {
-          data.id = Math.random().toString(36).slice(2, 6)
+        if (!data.Id) {
+          data.Id = Math.random().toString(36).slice(2, 6)
         }
 
         if (!isSync && !navigator.onLine) {
@@ -109,23 +104,30 @@ export const useInspectionStore = defineStore('inspection', {
           return
         }
 
+        const payload = {
+          ...data,
+          id: data.Id
+        }
+        delete payload.Id
+
         const res = await fetch(`${BASE_URL}/inspections`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
+          body: JSON.stringify(payload)
         })
 
         await new Promise(resolve => setTimeout(resolve, 250))
 
         const saved = await res.json()
-        const index = this.submittedInspections.findIndex(i => i.id === data.id)
 
+        const normalized = createInspection(saved)
+
+        const index = this.submittedInspections.findIndex(i => i.Id === normalized.Id)
         if (index !== -1) {
-          this.submittedInspections[index] = saved
+          this.submittedInspections[index] = normalized
         } else {
-          this.submittedInspections.push(saved)
+          this.submittedInspections.push(normalized)
         }
-
 
       } catch (err) {
         this.error = err
@@ -163,36 +165,39 @@ export const useInspectionStore = defineStore('inspection', {
       }
     },
 
-    async deleteInspection(id, isSync = false) {
+    async deleteInspection(Id, isSync = false) {
       this.loadingAction = true
 
       try {
         if (!isSync && !navigator.onLine) {
-          this.pendingSync.push({ type: 'delete', id })
+          this.pendingSync.push({ type: 'delete', Id })
 
           this.submittedInspections = this.submittedInspections.filter(
-            insp => insp.id !== id
+            insp => insp.Id !== Id
           )
 
-          if (this.currentInspection?.id === id) {
+          if (this.currentInspection?.Id === Id) {
             this.currentInspection = null
           }
 
           return
         }
 
-        await fetch(`${BASE_URL}/inspections/${id}`, { method: "DELETE" })
+        await fetch(`${BASE_URL}/inspections/${Id}`, { method: "DELETE" })
+
         this.submittedInspections = this.submittedInspections.filter(
-          insp => insp.id !== id
+          insp => insp.Id !== Id
         )
-        if (this.currentInspection?.id === id) {
+
+        if (this.currentInspection?.Id === Id) {
           this.currentInspection = null
         }
+
       } finally {
         this.loadingAction = false
       }
     },
-    
+
     async updateInspection(updated, isSync = false) {
       this.loadingAction = true
 
@@ -200,28 +205,35 @@ export const useInspectionStore = defineStore('inspection', {
         if (!isSync && !navigator.onLine) {
           this.pendingSync.push({ type: 'update', data: updated })
 
-          const index = this.submittedInspections.findIndex( i => i.id === updated.id)
+          const index = this.submittedInspections.findIndex(i => i.Id === updated.Id)
           if (index !== -1) {
             this.submittedInspections[index] = updated
           }
           return
-        } 
+        }
 
-        const res = await fetch(`${BASE_URL}/inspections/${updated.id}`, {
+        const payload = {
+          ...updated,
+          id: updated.Id
+        }
+        delete payload.Id
+
+        const res = await fetch(`${BASE_URL}/inspections/${updated.Id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(updated)
+          body: JSON.stringify(payload)
         })
 
         const saved = await res.json()
 
-        const index = this.submittedInspections.findIndex(i => i.id === saved.id)
+        const normalized = createInspection(saved)
+
+        const index = this.submittedInspections.findIndex(i => i.Id === normalized.Id)
         if (index !== -1) {
-          this.submittedInspections[index] = saved
+          this.submittedInspections[index] = normalized
         }
 
         await this.fetchInspections()
-
         this.currentInspection = null
 
       } catch (err) {
@@ -235,8 +247,8 @@ export const useInspectionStore = defineStore('inspection', {
       this.pendingSync.push(inspection)
     },
 
-    removePendingSync(id) {
-      this.pendingSync = this.pendingSync.filter(i => i.id !== id)
+    removePendingSync(Id) {
+      this.pendingSync = this.pendingSync.filter(i => i.Id !== Id)
     },
 
     async flushPendingSync() {
@@ -251,7 +263,7 @@ export const useInspectionStore = defineStore('inspection', {
           await this.updateInspection(item.data, true)
         }
         if (item.type === 'delete') {
-          await this.deleteInspection(item.id, true)
+          await this.deleteInspection(item.Id, true)
         }
       }
     },
@@ -261,7 +273,7 @@ export const useInspectionStore = defineStore('inspection', {
     },
 
     clearFormInspection() {
-      this.formInspection = this.formInspection = JSON.parse(JSON.stringify(defaultInspection))
+      this.formInspection = JSON.parse(JSON.stringify(defaultInspection))
     },
 
     toggleSort() {

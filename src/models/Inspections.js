@@ -1,6 +1,6 @@
 export function createInspection(data) {
   return {
-    id: data.id,
+    Id: data.Id || data.id,
     Location: data.Location,
     Date: data.Date,
     Status: data.Status,
