@@ -6,7 +6,7 @@ const model = defineModel()
     <div class="pa-4 border">
         <v-label class="mb-1">Documentatie</v-label>
         <v-file-input
-            v-model="model.Pictures"
+            v-model="model.Documentation"
             icon="mdi-upload"
             multiple
             chips

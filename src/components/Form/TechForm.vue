@@ -9,7 +9,7 @@ const model = defineModel()
         <v-text-field label="Storingen" v-model="model.Errors" />
         <v-label class="mb-1">Test Procedure</v-label>
         <v-file-input
-            v-model="model.Pictures"
+            v-model="model.TestProcedure"
             icon="mdi-upload"
             multiple
             chips

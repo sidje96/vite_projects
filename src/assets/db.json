@@ -1,3 +1,240 @@
 {
-  "inspections": []
+  "inspections": [
+    {
+      "id": "6czg",
+      "Location": "Stadshart",
+      "Date": "2026-05-26",
+      "Status": "Scheduled",
+      "Damage": [
+        {
+          "Location": "Ingang",
+          "DamageNew": true,
+          "Type": "normaal gebruik",
+          "Date": "2026-05-06",
+          "Acute": false,
+          "Description": "",
+          "Pictures": [
+            "https://res.cloudinary.com/dtvwwzmzg/image/upload/v1775037649/rvdjji2sos3ulxzo1nkq.png"
+          ]
+        }
+      ],
+      "OverdueMaintenance": [],
+      "TechnicalInstallations": [],
+      "Modifications": []
+    },
+    {
+      "id": "6qmv",
+      "Location": "Albert Heijn",
+      "Date": "2026-04-01",
+      "Status": "Completed",
+      "Damage": [],
+      "OverdueMaintenance": [
+        {
+          "Location": "Schiedam",
+          "Type": "elektra",
+          "Acute": true,
+          "CostIndication": "1500-2000",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [],
+      "Modifications": []
+    },
+    {
+      "id": "wa8d",
+      "Location": "Jumbo",
+      "Date": "2025-07-25",
+      "Status": "Completed",
+      "Damage": [],
+      "OverdueMaintenance": [],
+      "TechnicalInstallations": [
+        {
+          "Location": "Magazijn",
+          "Type": "koeling",
+          "Errors": "Kortsluiting",
+          "TestProcedure": [],
+          "Approved": false,
+          "Remarks": "",
+          "Pictures": []
+        }
+      ],
+      "Modifications": []
+    },
+    {
+      "id": "cilg",
+      "Location": "Van der Valk Hotel",
+      "Date": "2026-04-30",
+      "Status": "Scheduled",
+      "Damage": [
+        {
+          "Location": "Kelder",
+          "DamageNew": true,
+          "Type": "calamiteit",
+          "Date": "2026-04-16",
+          "Acute": true,
+          "Description": "",
+          "Pictures": []
+        }
+      ],
+      "OverdueMaintenance": [],
+      "TechnicalInstallations": [],
+      "Modifications": []
+    },
+    {
+      "id": "tee7",
+      "Location": "Fletcher Hotel",
+      "Date": "2026-04-21",
+      "Status": "Scheduled",
+      "Damage": [],
+      "OverdueMaintenance": [
+        {
+          "Location": "Kelder",
+          "Type": "leidingwerk",
+          "Acute": true,
+          "CostIndication": "1500-1800",
+          "Pictures": [
+            "https://res.cloudinary.com/dtvwwzmzg/image/upload/v1775038760/qr0syj1ulpeayvwernwf.jpg"
+          ]
+        }
+      ],
+      "TechnicalInstallations": [],
+      "Modifications": []
+    },
+    {
+      "Location": "Winkelcentrum",
+      "Date": "2026-04-10",
+      "Status": "Scheduled",
+      "Damage": [],
+      "OverdueMaintenance": [],
+      "TechnicalInstallations": [],
+      "Modifications": [
+        {
+          "Documentation": [
+            "https://res.cloudinary.com/dtvwwzmzg/image/upload/v1775039131/odv3amlg13iucfikhvkm.pdf"
+          ],
+          "Location": "Draaideur voorkant",
+          "ExecutedBy": "aannemer",
+          "Description": "Liep vast",
+          "Action": "laten aanpassen en keuren",
+          "Remarks": "",
+          "Pictures": [
+            "https://res.cloudinary.com/dtvwwzmzg/image/upload/v1775039131/djr1i8afju3gtsspt3x9.jpg"
+          ]
+        }
+      ],
+      "id": "hzez"
+    },
+    {
+      "id": "k0yj",
+      "Location": "Gouda",
+      "Date": "2026-04-29",
+      "Status": "Scheduled",
+      "Damage": [
+        {
+          "Location": "Voordeur Bios",
+          "DamageNew": false,
+          "Type": "normaal gebruik",
+          "Date": "2026-04-22",
+          "Acute": false,
+          "Description": "",
+          "Pictures": []
+        }
+      ],
+      "OverdueMaintenance": [],
+      "TechnicalInstallations": [],
+      "Modifications": [
+        {
+          "Documentation": [
+            "https://res.cloudinary.com/dtvwwzmzg/image/upload/v1775039022/zm688sylau7kfckihhgj.pdf"
+          ],
+          "Location": "",
+          "ExecutedBy": "",
+          "Description": "",
+          "Action": "",
+          "Remarks": "",
+          "Pictures": [
+            "https://res.cloudinary.com/dtvwwzmzg/image/upload/v1775039022/c7mifjd2u596r9bfntic.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dmsw",
+      "Location": "Zoetermeer",
+      "Date": "2025-01-29",
+      "Status": "Completed",
+      "Damage": [],
+      "OverdueMaintenance": [
+        {
+          "Location": "Gemeentehuis",
+          "Type": "elektra",
+          "Acute": false,
+          "CostIndication": "100-500",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [],
+      "Modifications": []
+    },
+    {
+      "id": "s0aa",
+      "Location": "Den Haag",
+      "Date": "2026-01-29",
+      "Status": "Completed",
+      "Damage": [],
+      "OverdueMaintenance": [],
+      "TechnicalInstallations": [],
+      "Modifications": [
+        {
+          "Documentation": [],
+          "Location": "Schilderswijk",
+          "ExecutedBy": "aannemer",
+          "Description": "Alle voordeuren moesten eruit",
+          "Action": "",
+          "Remarks": "",
+          "Pictures": []
+        }
+      ]
+    },
+    {
+      "id": "ziaz",
+      "Location": "Rome",
+      "Date": "2026-01-21",
+      "Status": "Completed",
+      "Damage": [
+        {
+          "Location": "Colosseum",
+          "DamageNew": false,
+          "Type": "slijtage",
+          "Date": "2026-01-21",
+          "Acute": false,
+          "Description": "Restauratie nodig",
+          "Pictures": [
+            "https://res.cloudinary.com/dtvwwzmzg/image/upload/v1775039324/rcrtczlygvijwggylnte.jpg"
+          ]
+        }
+      ],
+      "OverdueMaintenance": [],
+      "TechnicalInstallations": [],
+      "Modifications": []
+    },
+    {
+      "id": "4hc4",
+      "Location": "Amsterdam Centrum",
+      "Date": "2026-04-16",
+      "Status": "Scheduled",
+      "Damage": [],
+      "OverdueMaintenance": [
+        {
+          "Location": "Centrum",
+          "Type": "beglazing",
+          "Acute": true,
+          "CostIndication": "700-800",
+          "Pictures": []
+        }
+      ],
+      "TechnicalInstallations": [],
+      "Modifications": []
+    }
+  ]
 }
