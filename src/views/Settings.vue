@@ -208,7 +208,7 @@ function saveInitials() {
                     <v-card-text>
                     <v-switch
                         v-model="store.prefersDark"
-                        label="Dark mode"
+                        title="Dark mode"
                         color="custom-color"
                         false-icon="mdi-white-balance-sunny"
                         true-icon="mdi-moon-waning-crescent"
