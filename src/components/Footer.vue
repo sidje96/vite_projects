@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" transition="dialog-bottom-transition" fullscreen>
       
       <template v-slot:activator="{ props: activatorProps }">
-        <v-btn v-bind="activatorProps" stacked>
+        <v-btn v-bind="activatorProps" stacked title="App support">
           <v-icon>mdi-cellphone-information</v-icon>
           <span class="text-caption pt-1">App support</span>
         </v-btn>
