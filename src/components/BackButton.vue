@@ -3,6 +3,7 @@
     <v-btn
       v-bind="props"
       icon
+      title="terug"
       :size="size"
       :class="[
         isHovering ? 'bg-white text-custom-color' : 'bg-custom-color',

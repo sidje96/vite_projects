@@ -27,6 +27,7 @@
                 <v-btn
                     v-bind="notifications.count == 0 ? hoverProps : mergeProps(menuProps, hoverProps)"
                     icon
+                    title="Notificaties"
                     :size="xs ? '25' : (sm ? '35' : '45')"
                     :class="[
                     isHovering ? 'bg-white text-custom-color' : 'bg-loginBg',

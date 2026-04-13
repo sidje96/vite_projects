@@ -47,6 +47,9 @@ Ik heb naar mijn mening goed opgelet en getest of alle elementen op de app goed 
 Ook heb ik de app op verschillende browsers getest en op mijn telefoon.
 Alles is goed te bedienen en visueel goed te zien, alleen als je met de colorpicker een donkere kleur kiest en darkmode aanzet dan krijg je niet genoeg contrast verschil om dingen zichtbaar te hebben.
 
+##### Toepassing Usability
+De navigatieknoppen zijn duidelijk en hebben dezelfde styling. 
+
 ##### Sidenotes:
 Ik wilde de UI zo maken dat de kleuren allemaal in 1 keer aangepast konden worden. dit is bijna gelukt, maar met de colorpicker in de settings
 gingen sommige schaduwen van knoppen niet mee terwijl: als je de kant en klare knoppen gebruikt dan veranderen de knop schaduw kleuren wel en ik weet niet hoe ik dit anders kan doen of hoe ik dit moet oplossen.

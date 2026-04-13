@@ -9,7 +9,11 @@
     <v-container height="100%">
             <v-row>
                 <v-col cols="6">
-                    <v-btn block :to="{ name: 'Scheduled' }" stacked>
+                    <v-btn 
+                    block 
+                    :to="{ name: 'Scheduled' }" 
+                    stacked
+                    title="Gepland">
                         <v-badge v-if="store.numberScheduled > 0" 
                             class="d-block" 
                             location="top right" 
@@ -25,7 +29,11 @@
                     </v-btn>
                 </v-col>
                 <v-col cols="6">
-                    <v-btn block :to="{ name: 'Completed' }" stacked>
+                    <v-btn 
+                    block 
+                    :to="{ name: 'Completed' }" 
+                    stacked
+                    title="Afgerond">
                         <v-badge v-if="store.numberCompleted > 0" 
                             class="d-block" 
                             location="top right" 
@@ -43,13 +51,21 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <v-btn block :to="{ name: 'KnowledgeBase' }" stacked>
+                    <v-btn 
+                    block 
+                    :to="{ name: 'KnowledgeBase' }" 
+                    stacked
+                    title="Kennisbase">
                         <v-icon class="mt-1" size="80">mdi-apps</v-icon>
                         <span class="textstyle text-sm-body-2 text-md-h6">Kennisbase</span>
                     </v-btn>
                 </v-col>
                 <v-col>
-                    <v-btn block :to="{ name: 'Settings' }" stacked>
+                    <v-btn 
+                    block 
+                    :to="{ name: 'Settings' }" 
+                    stacked
+                    title="Instellingen">
                         <v-icon class="mt-1" size="80">mdi-cog</v-icon>
                         <span class="textstyle text-sm-body-2 text-md-h6">Instellingen</span>
                     </v-btn>
