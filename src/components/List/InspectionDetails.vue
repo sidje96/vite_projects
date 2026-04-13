@@ -70,7 +70,7 @@ const sections = computed(() => {
     <div v-if="inspection">
       <v-sheet class="d-flex justify-space-between">
         <h3 class="text-custom-color mb-4">Inspectie details</h3>
-        <v-btn @click="clear" icon density="comfortable">
+        <v-btn @click="clear" icon density="comfortable" title="Sluiten">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-sheet>

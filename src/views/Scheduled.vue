@@ -19,6 +19,7 @@ function newInspection() {
             <v-row>
                 <v-col cols="6">
                     <v-btn
+                        title="Nieuwe Inspectie"
                         variant="elevated"
                         class="px-8 py-6"
                         prepend-icon="mdi-plus-circle"
@@ -31,6 +32,7 @@ function newInspection() {
                 </v-col>
                     <v-col cols="6">
                         <v-btn
+                        title="Afgeronde inspecties"
                         variant="elevated"
                         class="text-h6 px-8 py-6"
                         prepend-icon="mdi-check"

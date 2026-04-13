@@ -115,12 +115,14 @@ function confirmDelete(Id) {
 
             <template #append>
               <v-btn
+                title="Aanspassen"
                 icon="mdi-pencil"
                 color="custom-color"
                 variant="text"
                 @click.stop="editInspection(inspection)"
               />
               <v-btn
+                title="Verwijderen"
                 icon="mdi-delete"
                 color="red"
                 variant="text"
